@@ -17,6 +17,7 @@
 				
 				<label for="plominoField">Plomino Field</label>&nbsp;:
 				<input type="text" name="plominoField" id="plominoField" value="field" />
+				
 			</fieldset>
 		
 			<div class="mceActionPanel formControls">

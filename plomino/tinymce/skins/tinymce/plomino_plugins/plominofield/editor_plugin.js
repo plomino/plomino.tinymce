@@ -15,9 +15,9 @@
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			ed.addCommand('mcePlominoField', function() {
 				ed.windowManager.open({
-					file : url + '/plominofield.htm',
-					width : 260 + parseInt(ed.getLang('plominofield.delta_width', 0)),
-					height : 120 + parseInt(ed.getLang('plominofield.delta_height', 0)),
+					file : url + '/plominofield.htm?parent=' + location.pathname,
+					width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
+					height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
 					inline : 1
 				}, {
 					plugin_url : url/*, // Plugin absolute URL

@@ -1,0 +1,11 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+
+   <browser:view
+        name="tinyfield"
+        for="Products.CMFPlomino.interfaces.IPlominoField"
+        class=".field.PlominoField"
+        permission="zope.Public"
+        />
+</configure>

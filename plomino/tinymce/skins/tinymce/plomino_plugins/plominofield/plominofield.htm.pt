@@ -9,24 +9,59 @@
 	<script type="text/javascript" src="js/plominofield.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/plominofield.css">
 </head>
-<body>
+<body tal:define="parentpath here/REQUEST/parent|nothing;
+                  form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
+                  selectedfield here/REQUEST/selectedfield|nothing;">
+                  <!--field1 form/field1;
+                  adapted field1/@@tinyfield;">-->
 	<div class="dialog-wrapper">
-		<form onsubmit="PlominoFieldDialog.submit(); return false;" action="#">
-			<fieldset id="general_panel">
-				<legend>Add/edit a Plomino Field</legend>
+		<fieldset id="general_panel">
+			<legend>Add/edit a Plomino Field</legend>
+			
+			<fieldset class="column">
+				<legend>Add a field</legend>
 				
-				<label for="plominoField">Plomino Field</label>&nbsp;:
+				<label for="plominoField">Field ID</label><br />
+				
 				<input type="text" name="plominoField" id="plominoField" value="field" />
-				
 			</fieldset>
+			
+			<!--<fieldset class="column">
+				<legend>Edit a field</legend>
+				
+				<form id="fieldSelection" method="get">
+					<label for="plominoField">Field id</label>
+					<select id="fieldsList" name="selectedfield" onchange="document.getElementById('fieldSelection').submit();">
+						<option
+							tal:repeat="field python:form.getFields()"
+							tal:content="field/id"
+							tal:attributes="value field/id">a</option>
+					</select>
+					<input type="hidden" name="parent" tal:attributes="value parentpath" />
+				<form>
+				<br />
+				
+				<label for="fieldTypesList">Field type</label>
+				<select id="fieldTypesList" name="fieldsList">
+					<option tal:content="selectedfield">a</option>
+				</select>
+				<br />
+				
+				<label for="fieldType">Field type</label>
+				<input type="texte" id="fieldType" name="fieldType" tal:attributes="value form/field1/FieldType" />
+				<br />
+								
+			</fieldset>-->
+		</fieldset>
 		
-			<div class="mceActionPanel formControls">
+		<div class="mceActionPanel formControls">
+			<form onsubmit="PlominoFieldDialog.submit(); return false;" action="#">
 				<span class="actionButtons">
 					<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
 					<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
 				</span>
-			</div>
-	    </form>
+		    </form>
+		</div>
 	</div>
 	
 </body>

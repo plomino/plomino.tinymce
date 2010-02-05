@@ -5,6 +5,7 @@
     i18n_domain="plomino.tinymce">
 
   <include file="profiles.zcml" />
+  <include package=".browser"/>
   
   <five:registerPackage package="." initialize=".initialize" />
 

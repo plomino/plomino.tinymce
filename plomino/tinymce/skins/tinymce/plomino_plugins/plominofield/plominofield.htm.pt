@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" id="region-content" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" i18n:domain="tinymce">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+	<title>Add/edit a Plomino Field</title>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+	<script type="text/javascript" src="js/plominofield.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/plominofield.css">
+</head>
+<body>
+	<div class="dialog-wrapper">
+		<form onsubmit="PlominoFieldDialog.submit(); return false;" action="#">
+			<fieldset id="general_panel">
+				<legend>Add/edit a Plomino Field</legend>
+				
+				<label for="plominoField">Plomino Field</label>&nbsp;:
+				<input type="text" name="plominoField" id="plominoField" value="field" />
+			</fieldset>
+		
+			<div class="mceActionPanel formControls">
+				<span class="actionButtons">
+					<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
+					<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
+				</span>
+			</div>
+	    </form>
+	</div>
+	
+</body>
+</html>

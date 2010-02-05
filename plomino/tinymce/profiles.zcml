@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="PlominoForm"
+    xmlns:cmf="http://namespaces.zope.org/cmf">
+
+  <include package="Products.GenericSetup" file="meta.zcml" />
+
+  <!-- ##code-section profiles.zcml-top #fill in your manual code here -->
+  <!-- ##/code-section profiles.zcml-top -->
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Plomino TinyMCE Integration"
+      directory="profiles/default"
+      description="Extension profile for PlominoField."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <cmf:registerDirectory
+	name="tinymce"/>
+
+  
+  <!-- ##code-section profiles.zcml #fill in your manual code here -->
+  <!-- ##/code-section profiles.zcml -->
+
+</configure>

@@ -1,6 +1,10 @@
 README.txt
 setup.cfg
 setup.py
+docs/HISTORY.txt
+docs/INSTALL.txt
+docs/LICENSE.GPL
+docs/LICENSE.txt
 plomino/__init__.py
 plomino.tinymce.egg-info/PKG-INFO
 plomino.tinymce.egg-info/SOURCES.txt
@@ -12,4 +16,14 @@ plomino.tinymce.egg-info/paster_plugins.txt
 plomino.tinymce.egg-info/requires.txt
 plomino.tinymce.egg-info/top_level.txt
 plomino/tinymce/__init__.py
+plomino/tinymce/configure.zcml
+plomino/tinymce/profiles.zcml
 plomino/tinymce/tests.py
+plomino/tinymce/profiles/default/skins.xml
+plomino/tinymce/profiles/default/tinymce.xml
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/editor_plugin.js
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/plominofield.htm.pt
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/css/plominofield.css
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/img/PlominoField.gif
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/js/plominofield.js
+plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/langs/en.js

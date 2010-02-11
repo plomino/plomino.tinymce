@@ -1,3 +1,5 @@
+from Products.CMFPlomino.config import FIELD_TYPES
+
 class PlominoField(object):
     """
     """
@@ -12,8 +14,8 @@ class PlominoField(object):
         """
         return self
      
-    def truc(self):
+    def getFieldTypes(self):
+        """Return a list of possible types for a field
         """
-        """
-        return "machin"
+        return [(pair[0], pair[1][0]) for pair in FIELD_TYPES.items()]
     

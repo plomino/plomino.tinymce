@@ -14,8 +14,23 @@
 		init : function(ed, url) {
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			ed.addCommand('mcePlominoField', function() {
+				
+				// Find the field id
+				// Select the parent node of the selection
+				var selection = ed.selection.getNode();
+				// If the node is a <span class="plominoFieldClass"/>, select all its content
+				if (selection.getAttribute('class') == 'plominoFieldClass')
+				{
+					ed.selection.select(selection);
+					var fieldId = selection.firstChild.nodeValue;
+				}
+				// Else, keep the selection 
+				else
+					var fieldId = ed.selection.getContent();
+				
 				ed.windowManager.open({
-					file : url + '/plominofield.htm?parent=' + location.pathname,
+					// GET the parent pathname (part of the URL) and the field selected in the editor
+					file : url + '/plominofield.htm?parent=' + location.pathname + '&selectedfield=' + fieldId,
 					width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
 					height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
 					inline : 1

@@ -11,46 +11,40 @@
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
-                  selectedfield here/REQUEST/selectedfield|nothing;">
-                  <!--field1 form/field1;
-                  adapted field1/@@tinyfield;">-->
+                  selectedfield here/REQUEST/selectedfield|nothing;
+                  field python:(selectedfield in (field.id for field in form.getFields())) and getattr(form, selectedfield) or form.getFields()[0];
+                  adapted field/tinyfield;">
 	<div class="dialog-wrapper">
 		<fieldset id="general_panel">
 			<legend>Add/edit a Plomino Field</legend>
 			
-			<fieldset class="column">
-				<legend>Add a field</legend>
 				
-				<label for="plominoField">Field ID</label><br />
-				
-				<input type="text" name="plominoField" id="plominoField" value="field" />
-			</fieldset>
+			<!--<p>
+				<label for="plominoFieldId_text">Add</label><br />
+				<input type="text" name="plominoFieldId_text" id="plominoFieldId_text" tal:attributes="value selectedfield" />
+			</p>-->
+			
+			<label for="plominoFieldId_select">Field ID</label><br />
+			<select id="plominoFieldId_select" name="selectedfield">
+				<option
+					tal:repeat="item python:form.getFields()"
+					tal:content="item/id"
+					tal:attributes="value item/id; selected python:item.id==field.id">a</option>
+			</select>
 			
 			<!--<fieldset class="column">
-				<legend>Edit a field</legend>
+				<legend>Edit a field: <span tal:content="field/id"></span></legend>
 				
-				<form id="fieldSelection" method="get">
-					<label for="plominoField">Field id</label>
-					<select id="fieldsList" name="selectedfield" onchange="document.getElementById('fieldSelection').submit();">
-						<option
-							tal:repeat="field python:form.getFields()"
-							tal:content="field/id"
-							tal:attributes="value field/id">a</option>
-					</select>
-					<input type="hidden" name="parent" tal:attributes="value parentpath" />
-				<form>
 				<br />
 				
 				<label for="fieldTypesList">Field type</label>
 				<select id="fieldTypesList" name="fieldsList">
-					<option tal:content="selectedfield">a</option>
+					<option tal:repeat="type adapted/getFieldTypes"
+							tal:content="python:type[1]"
+							tal:attributes="value python:type[0]; selected python:field.FieldType==type[0]"></option>
 				</select>
 				<br />
 				
-				<label for="fieldType">Field type</label>
-				<input type="texte" id="fieldType" name="fieldType" tal:attributes="value form/field1/FieldType" />
-				<br />
-								
 			</fieldset>-->
 		</fieldset>
 		

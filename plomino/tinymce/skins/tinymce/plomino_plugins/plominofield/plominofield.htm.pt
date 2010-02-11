@@ -12,50 +12,51 @@
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
                   selectedfield here/REQUEST/selectedfield|nothing;
-                  field python:(selectedfield in (field.id for field in form.getFields())) and getattr(form, selectedfield) or form.getFields()[0];
+                  isexistingfield python:(selectedfield in (field.id for field in form.getFields()));
+                  field python:isexistingfield and getattr(form, selectedfield) or form.getFields()[0];
                   adapted field/tinyfield;">
 	<div class="dialog-wrapper">
-		<fieldset id="general_panel">
-			<legend>Add/edit a Plomino Field</legend>
-			
+		
+			<fieldset id="general_panel">
+				<legend>Add/edit a Plomino Field</legend>
 				
-			<!--<p>
-				<label for="plominoFieldId_text">Add</label><br />
-				<input type="text" name="plominoFieldId_text" id="plominoFieldId_text" tal:attributes="value selectedfield" />
-			</p>-->
-			
-			<label for="plominoFieldId_select">Field ID</label><br />
-			<select id="plominoFieldId_select" name="selectedfield">
-				<option
-					tal:repeat="item python:form.getFields()"
-					tal:content="item/id"
-					tal:attributes="value item/id; selected python:item.id==field.id">a</option>
-			</select>
-			
-			<!--<fieldset class="column">
-				<legend>Edit a field: <span tal:content="field/id"></span></legend>
+				<label for="plominoFieldId">Field ID</label>
+				<div tal:condition="isexistingfield">
+					<form id="fieldSelection" method="get">
+						<select id="plominoFieldId" name="selectedfield" onchange="this.form.submit();">
+							<option
+								tal:repeat="item python:form.getFields()"
+								tal:content="item/id"
+								tal:attributes="value item/id; selected python:item.id==field.id">a</option>
+						</select>
+						<input name="parent" type="hidden" tal:attributes="value parentpath" />
+					</form>
+				</div>
+				<input type="text" name="plominoFieldId" id="plominoFieldId"
+						tal:condition="python:not isexistingfield" tal:attributes="value selectedfield" />
 				
-				<br />
+					
+			</fieldset>
+			
+		<form onsubmit="PlominoFieldDialog.submit(); return false;" method="post"
+				tal:attributes="action python:field.absolute_url() + '/tinyfield/setFieldProperties'">
+			<fieldset>	
+				<legend>Edit field preferences</legend>
 				
 				<label for="fieldTypesList">Field type</label>
-				<select id="fieldTypesList" name="fieldsList">
+				<select id="fieldTypesList" name="fieldtype">
 					<option tal:repeat="type adapted/getFieldTypes"
 							tal:content="python:type[1]"
 							tal:attributes="value python:type[0]; selected python:field.FieldType==type[0]"></option>
 				</select>
-				<br />
-				
-			</fieldset>-->
-		</fieldset>
-		
-		<div class="mceActionPanel formControls">
-			<form onsubmit="PlominoFieldDialog.submit(); return false;" action="#">
-				<span class="actionButtons">
-					<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
-					<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
-				</span>
-		    </form>
-		</div>
+			</fieldset>
+			<div class="mceActionPanel formControls">
+					<span class="actionButtons">
+						<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
+						<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
+					</span>
+			</div>
+		</form>
 	</div>
 	
 </body>

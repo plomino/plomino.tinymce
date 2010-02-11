@@ -33,13 +33,13 @@ var PlominoFieldDialog = {
 		var ed = tinyMCEPopup.editor;
 		
 		// String to add in the editor
-		var fieldIdInSpan = '<span class="plominoFieldClass">' + document.getElementById('plominoFieldId_select').value + '</span>';
+		var fieldIdInSpan = '<span class="plominoFieldClass">' + document.getElementById('plominoFieldId').value + '</span>';
 		
 		// Insert or replace the selection
 		tinyMCEPopup.restoreSelection();
 		ed.execCommand('mceInsertContent', false, fieldIdInSpan, {skip_undo : 1});
 
-		tinyMCEPopup.close();
+		//tinyMCEPopup.close();
 		return;
 	}
 }

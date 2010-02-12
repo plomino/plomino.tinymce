@@ -46,12 +46,19 @@
 			<fieldset>
 				<legend>Edit field preferences</legend>
 				
-				<label for="fieldTypesList">Field type</label>
-				<select id="fieldTypesList" name="fieldtype">
-					<option tal:repeat="type adapted/getFieldTypes"
-							tal:content="python:type[1]"
-							tal:attributes="value python:type[0]; selected python:field.FieldType==type[0]"></option>
-				</select>
+				<!--<p>
+					<label for="fieldTitle">Title</label>
+					<input type="text" name="fieldtitle" id="fieldTitle" tal:attributes="value field/title" />
+				</p>-->
+				
+				<p>
+					<label for="fieldTypesList">Field type</label>
+					<select id="fieldTypesList" name="fieldtype">
+						<option tal:repeat="type adapted/getFieldTypes"
+								tal:content="python:type[1]"
+								tal:attributes="value python:type[0]; selected python:field.FieldType==type[0]"></option>
+					</select>
+				</p>
 			</fieldset>
 			<div class="mceActionPanel formControls">
 					<span class="actionButtons">

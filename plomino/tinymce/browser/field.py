@@ -25,10 +25,13 @@ class PlominoField(object):
         """
         fieldid = self.request.get("fieldid", None)
         fieldtype = self.request.get("fieldtype", None)
+        #fieldtitle = self.request.get("fieldtitle", None)
         
         # self.context is the current field
-        if (fieldid and fieldid == self.context.id
-                and fieldtype):
-            self.context.FieldType = fieldtype
+        if fieldid and fieldid == self.context.id:
+            if fieldtype:
+                self.context.FieldType = fieldtype
+            #if fieldtitle:
+            #    self.context.title = fieldtitle
         
         self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")

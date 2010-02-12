@@ -19,7 +19,7 @@
 				// Select the parent node of the selection
 				var selection = ed.selection.getNode();
 				// If the node is a <span class="plominoFieldClass"/>, select all its content
-				if (selection.getAttribute('class') == 'plominoFieldClass')
+				if (tinymce.DOM.hasClass(selection, 'plominoFieldClass'))
 				{
 					ed.selection.select(selection);
 					var fieldId = selection.firstChild.nodeValue;

@@ -33,7 +33,10 @@ var PlominoFieldDialog = {
 		var ed = tinyMCEPopup.editor;
 		
 		// String to add in the editor
-		var fieldIdInSpan = '<span class="plominoFieldClass">' + document.getElementById('plominoFieldId').value + '</span>';
+		/*if (ed.selection.getNode().getAttribute('class') == 'plominoFieldClass mceAtomic')
+			var fieldIdInSpan = document.getElementById('plominoFieldId').value;
+		else*/
+			var fieldIdInSpan = '<span class="plominoFieldClass mceAtomic">' + document.getElementById('plominoFieldId').value + '</span>';
 		
 		// Insert or replace the selection
 		tinyMCEPopup.restoreSelection();

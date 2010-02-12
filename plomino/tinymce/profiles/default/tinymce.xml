@@ -32,6 +32,7 @@
     <element value="ploneimage"/>
     <element value="plonelink"/>
     <element value="plominofield|/plomino_plugins/plominofield/editor_plugin.js"/>
+    <element value="atomic|/plomino_plugins/atomic/editor_plugin.js"/>
   </customplugins>
   <entity_encoding value="raw"/>
  </resourcetypes>

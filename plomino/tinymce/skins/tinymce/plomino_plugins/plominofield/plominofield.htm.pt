@@ -17,30 +17,33 @@
                   adapted field/tinyfield;">
 	<div class="dialog-wrapper">
 		
-			<fieldset id="general_panel">
-				<legend>Add/edit a Plomino Field</legend>
+		<fieldset tal:condition="isexistingfield">
+			<legend>Select a Plomino Field</legend>
+			
+			<label for="plominoFieldId">Field ID</label>
+			<form id="fieldSelection" method="get">
+				<select id="plominoFieldId" name="selectedfield" onchange="this.form.submit();">
+					<option
+						tal:repeat="item python:form.getFields()"
+						tal:content="item/id"
+						tal:attributes="value item/id; selected python:item.id==field.id">a</option>
+				</select>
+				<input name="parent" type="hidden" tal:attributes="value parentpath" />
+			</form>
+		</fieldset>
+		
+		
+		<form onsubmit="PlominoFieldDialog.submit();" method="post"
+				tal:attributes="action python:field.absolute_url() + '/tinyfield/setFieldProperties'">
+				
+			<fieldset tal:condition="python:not isexistingfield">
+				<legend>Create a Plomino Field</legend>
 				
 				<label for="plominoFieldId">Field ID</label>
-				<div tal:condition="isexistingfield">
-					<form id="fieldSelection" method="get">
-						<select id="plominoFieldId" name="selectedfield" onchange="this.form.submit();">
-							<option
-								tal:repeat="item python:form.getFields()"
-								tal:content="item/id"
-								tal:attributes="value item/id; selected python:item.id==field.id">a</option>
-						</select>
-						<input name="parent" type="hidden" tal:attributes="value parentpath" />
-					</form>
-				</div>
-				<input type="text" name="plominoFieldId" id="plominoFieldId"
-						tal:condition="python:not isexistingfield" tal:attributes="value selectedfield" />
-				
-					
+				<input type="text" name="fieldid" id="plominoFieldId" tal:attributes="value selectedfield" />
 			</fieldset>
 			
-		<form onsubmit="PlominoFieldDialog.submit(); return false;" method="post"
-				tal:attributes="action python:field.absolute_url() + '/tinyfield/setFieldProperties'">
-			<fieldset>	
+			<fieldset>
 				<legend>Edit field preferences</legend>
 				
 				<label for="fieldTypesList">Field type</label>

@@ -1,5 +1,6 @@
 from Products.CMFPlomino.config import FIELD_TYPES
 
+
 class PlominoField(object):
     """
     """
@@ -22,10 +23,12 @@ class PlominoField(object):
     def setFieldProperties(self):
         """Set field properties to their new values. 
         """
+        fieldid = self.request.get("fieldid", None)
         fieldtype = self.request.get("fieldtype", None)
         
-        if (fieldtype):
-            self.FieldType = fieldtype
-            
-        self.request.RESPONSE.redirect(self.portal_url + "/plomino_plugins/plominofield/plominofield_submit.htm")
+        # self.context is the current field
+        if (fieldid and fieldid == self.context.id
+                and fieldtype):
+            self.context.FieldType = fieldtype
         
+        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")

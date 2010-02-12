@@ -6,10 +6,8 @@
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
-	<script type="text/javascript" src="js/plominofield.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/plominofield.css">
 </head>
-<body oninit="tinyMCEPopup.close();">         
-	<p>Redirecting...</p>
+<body onload="tinyMCEPopup.close();">         
+	<p>Closing the popup.</p>
 </body>
 </html>

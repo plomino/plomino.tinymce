@@ -30,7 +30,7 @@
 				
 				ed.windowManager.open({
 					// GET the parent pathname (part of the URL) and the field selected in the editor
-					file : url + '/plominofield.htm?parent=' + location.pathname + '&selectedfield=' + fieldId,
+					file : url + '/plominofield.htm?parent=' + location.pathname + '&fieldid=' + fieldId,
 					width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
 					height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
 					inline : 1

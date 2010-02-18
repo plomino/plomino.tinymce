@@ -8,4 +8,10 @@
         class=".field.PlominoField"
         permission="zope.Public"
         />
+   <browser:view
+        name="tinyform"
+        for="Products.CMFPlomino.interfaces.IPlominoForm"
+        class=".form.PlominoForm"
+        permission="zope.Public"
+        />
 </configure>

@@ -13,11 +13,11 @@
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
                   fieldid here/REQUEST/fieldid|nothing;
                   isexistingfield python:(fieldid in (field.id for field in form.getFields()));
-                  field python:isexistingfield and getattr(form, fieldid) or form.getFields()[0];
+                  field python:isexistingfield and getattr(form, fieldid);
                   fieldtype python:isexistingfield and field.FieldType or 'TEXT';
                   fieldmode python:isexistingfield and field.FieldMode or 'EDITABLE';
                   fieldformula python:isexistingfield and field.getFormula() or '';
-                  adapted field/tinyfield;">
+                  adapted form/tinyform|nothing;">
 	<div class="dialog-wrapper">
 		
 		<!-- Form which selects an existing field -->
@@ -30,7 +30,7 @@
 					<option
 						tal:repeat="item python:form.getFields()"
 						tal:content="item/id"
-						tal:attributes="value item/id; selected python:item.id==field.id">a</option>
+						tal:attributes="value item/id; selected python:item.id==fieldid">a</option>
 				</select>
 				<input name="parent" type="hidden" tal:attributes="value parentpath" />
 			</form>
@@ -39,7 +39,7 @@
 		
 		<!-- Form which edits the selected field -->
 		<form onsubmit="PlominoFieldDialog.submit();" method="post"
-				tal:attributes="action python:field.absolute_url() + '/tinyfield/setFieldProperties'">
+				tal:attributes="action python:isexistingfield and field.absolute_url() + '/tinyfield/setFieldProperties' or form.absolute_url() + '/tinyform/addField'">
 				
 			<fieldset tal:condition="python:not isexistingfield">
 				<legend>Create a Plomino Field</legend>

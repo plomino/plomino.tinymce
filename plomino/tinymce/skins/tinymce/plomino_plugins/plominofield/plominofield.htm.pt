@@ -36,6 +36,10 @@
 			</form>
 		</fieldset>
 		
+		<fieldset tal:condition="isexistingfield">
+			<legend>Advanced edition</legend>
+			<a tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Edit the field</a>
+		</fieldset>
 		
 		<!-- Form which edits the selected field -->
 		<form onsubmit="PlominoFieldDialog.submit();" method="post"

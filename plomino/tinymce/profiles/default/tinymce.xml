@@ -50,6 +50,10 @@
    <element value="Heading cell|th|"/>
    <element value="Page break (print only)|div|pageBreak"/>
    <element value="Clear floats|div|visualClear"/>
+   <element value="Plomino Field|span|plominoFieldClass"/>
+   <element value="Plomino Action|span|plominoActionClass"/>
+   <element value="Plomino Hide-when formula|span|plominoHidewhenClass"/>
+   <element value="Plomino Subform|span|plominoSubformClass"/>
   </styles>
   <content_css value=""/>
   <editor_width value="100%"/>

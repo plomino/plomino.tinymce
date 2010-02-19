@@ -1,7 +1,10 @@
 Changelog
 =========
 
-1.0dev (unreleased)
+1.0alpha (unreleased)
 -------------------
 
 - Initial release
+- Packaged in an egg
+- Plomino field can be edited from the TinyMCE editor
+- It can also be created

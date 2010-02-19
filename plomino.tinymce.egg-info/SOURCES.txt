@@ -22,8 +22,11 @@ plomino/tinymce/tests.py
 plomino/tinymce/browser/__init__.py
 plomino/tinymce/browser/configure.zcml
 plomino/tinymce/browser/field.py
+plomino/tinymce/browser/form.py
 plomino/tinymce/profiles/default/skins.xml
 plomino/tinymce/profiles/default/tinymce.xml
+plomino/tinymce/skins/tinymce/plomino_plugins/atomic/editor_plugin.js
+plomino/tinymce/skins/tinymce/plomino_plugins/atomic/editor_plugin_src.js
 plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/editor_plugin.js
 plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/plominofield.htm.pt
 plomino/tinymce/skins/tinymce/plomino_plugins/plominofield/plominofield_submit.htm.pt

@@ -55,7 +55,7 @@ from another package's configure.zcml file.
 Integration in Plone
 ====================
 
-In the "Site Setup" -> "Add-on Products" page, install successively TinyMCE,
-CMFPlomino, and Plomino TinyMCE Integration. If everithing is installed in the
-same operation, some problems can occur (TinyMCE not loaded, buttons not in the
-toolbar...)
+In the Plone site -> "Site Setup" -> "Add-on Products" page, install successively
+TinyMCE, CMFPlomino, and Plomino TinyMCE Integration. If everithing is installed
+in the same operation, some problems can occur (TinyMCE not loaded, buttons not
+in the toolbar...)

@@ -42,9 +42,9 @@
 
 			// Register example button
 			ed.addButton('plominofield', {
-				title : 'plominofield.desc',
+				title : 'Add/edit a Plomino Field',
 				cmd : 'mcePlominoField',
-				image : url + '/img/PlominoField.gif'
+				image : url + '/img/PlominoField.png'
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected

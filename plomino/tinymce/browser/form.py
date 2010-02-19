@@ -35,7 +35,7 @@ class PlominoForm(object):
         fieldformula = self.request.get("fieldformula", "")
         
         # self.context is the current form
-        if fieldid and fieldid not in self.context.getFields():
+        if fieldid and fieldid not in (field.id for field in self.context.getFields()):
             self.context.invokeFactory('PlominoField', id=fieldid, Title=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
             field = self.context.aq_parent.aq_parent.getFormField(fieldid)
             field.setFormula(fieldformula)

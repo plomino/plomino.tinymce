@@ -24,9 +24,37 @@
 					ed.selection.select(selection);
 					var fieldId = selection.firstChild.nodeValue;
 				}
-				// Else, keep the selection 
 				else
-					var fieldId = ed.selection.getContent();
+				{
+					// If the selection contains a <span class="plominoFieldClass"/>, select all its content
+					nodes = tinymce.DOM.select('span.plominoFieldClass', selection);
+					if (nodes.length > 0)
+					{
+						// Search if a node in the found nodes belongs to the selection
+						for (var i = 0; i < nodes.length; i++)
+						{
+							if (ed.selection.getContent().indexOf(tinymce.DOM.getOuterHTML(nodes[i])) != -1)
+							{
+								var node = nodes[i];
+								break;
+							}
+						}
+						
+						// If a node is found, select it
+						if (node)
+						{
+							ed.selection.select(node);
+							var fieldId = node.firstChild.nodeValue;
+						}
+						// Else, keep the selection
+						else
+							var fieldId = ed.selection.getContent();
+					}
+					
+					// Else, keep the selection 
+					else
+						var fieldId = ed.selection.getContent();
+				}
 				
 				ed.windowManager.open({
 					// GET the parent pathname (part of the URL) and the field selected in the editor

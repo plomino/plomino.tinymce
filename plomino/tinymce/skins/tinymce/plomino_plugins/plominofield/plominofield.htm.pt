@@ -11,15 +11,16 @@
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
-                  fieldid here/REQUEST/fieldid|nothing;
+                  fieldidparam here/REQUEST/fieldid|nothing;
+                  fieldid python:fieldidparam or (len(form.getFields()) > 0 and form.getFields()[0].id) or '';
                   isexistingfield python:(fieldid in (field.id for field in form.getFields()));
                   field python:isexistingfield and getattr(form, fieldid);
                   fieldtype python:isexistingfield and field.FieldType or 'TEXT';
                   fieldmode python:isexistingfield and field.FieldMode or 'EDITABLE';
                   fieldformula python:isexistingfield and field.getFormula() or '';
                   adapted form/tinyform|nothing;">
+                  
 	<div class="dialog-wrapper">
-		
 		<!-- Form which selects an existing field -->
 		<fieldset tal:condition="isexistingfield">
 			<legend>Select a Plomino Field</legend>

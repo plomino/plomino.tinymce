@@ -12,61 +12,68 @@
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
 		init : function(ed, url) {
+			// If the form is being created, don't create the same command
+			if (location.pathname.indexOf("portal_factory/PlominoForm") != -1)
+				ed.addCommand('mcePlominoField', function() {
+					alert("Please save the form before using this button.");
+				});
+		
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
-			ed.addCommand('mcePlominoField', function() {
-				
-				// Find the field id
-				// Select the parent node of the selection
-				var selection = ed.selection.getNode();
-				// If the node is a <span class="plominoFieldClass"/>, select all its content
-				if (tinymce.DOM.hasClass(selection, 'plominoFieldClass'))
-				{
-					ed.selection.select(selection);
-					var fieldId = selection.firstChild.nodeValue;
-				}
-				else
-				{
-					// If the selection contains a <span class="plominoFieldClass"/>, select all its content
-					nodes = tinymce.DOM.select('span.plominoFieldClass', selection);
-					if (nodes.length > 0)
+			else
+				ed.addCommand('mcePlominoField', function() {
+					
+					// Find the field id
+					// Select the parent node of the selection
+					var selection = ed.selection.getNode();
+					// If the node is a <span class="plominoFieldClass"/>, select all its content
+					if (tinymce.DOM.hasClass(selection, 'plominoFieldClass'))
 					{
-						// Search if a node in the found nodes belongs to the selection
-						for (var i = 0; i < nodes.length; i++)
+						ed.selection.select(selection);
+						var fieldId = selection.firstChild.nodeValue;
+					}
+					else
+					{
+						// If the selection contains a <span class="plominoFieldClass"/>, select all its content
+						nodes = tinymce.DOM.select('span.plominoFieldClass', selection);
+						if (nodes.length > 0)
 						{
-							if (ed.selection.getContent().indexOf(tinymce.DOM.getOuterHTML(nodes[i])) != -1)
+							// Search if a node in the found nodes belongs to the selection
+							for (var i = 0; i < nodes.length; i++)
 							{
-								var node = nodes[i];
-								break;
+								if (ed.selection.getContent().indexOf(tinymce.DOM.getOuterHTML(nodes[i])) != -1)
+								{
+									var node = nodes[i];
+									break;
+								}
 							}
+							
+							// If a node is found, select it
+							if (node)
+							{
+								ed.selection.select(node);
+								var fieldId = node.firstChild.nodeValue;
+							}
+							// Else, keep the selection
+							else
+								var fieldId = ed.selection.getContent();
 						}
 						
-						// If a node is found, select it
-						if (node)
-						{
-							ed.selection.select(node);
-							var fieldId = node.firstChild.nodeValue;
-						}
-						// Else, keep the selection
+						// Else, keep the selection 
 						else
 							var fieldId = ed.selection.getContent();
 					}
 					
-					// Else, keep the selection 
-					else
-						var fieldId = ed.selection.getContent();
-				}
-				
-				ed.windowManager.open({
-					// GET the parent pathname (part of the URL) and the field selected in the editor
-					file : url + '/plominofield.htm?parent=' + location.pathname + '&fieldid=' + fieldId,
-					width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
-					height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
-					inline : 1
-				}, {
-					plugin_url : url/*, // Plugin absolute URL
-					some_custom_arg : 'custom arg' // Custom argument*/
+					ed.windowManager.open({
+						// GET the parent pathname (part of the URL) and the field selected in the editor
+						file : url + '/plominofield.htm?parent=' + location.pathname + '&fieldid=' + fieldId,
+						width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
+						height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
+						inline : 1
+					}, {
+						plugin_url : url/*, // Plugin absolute URL
+						some_custom_arg : 'custom arg' // Custom argument*/
+					});
 				});
-			});
 
 			// Register example button
 			ed.addButton('plominofield', {

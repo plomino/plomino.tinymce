@@ -1,4 +1,4 @@
-plomino.tinymce Installation
+Plomino TinyMCE Integration Installation
 ----------------------------
 
 To install plomino.tinymce into the global Python environment (or a workingenv),

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0alpha (unreleased)
+0.1alpha
 -------------------
 
 - Initial release

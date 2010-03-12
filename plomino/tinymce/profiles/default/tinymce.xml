@@ -127,6 +127,7 @@
   <toolbar_cleanup value="False"/>
   <customtoolbarbuttons>
   <toolbar_plominofield value="plominofield"/>
+  <toolbar_plominofield value="plominoaction"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" id="region-content" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" i18n:domain="tinymce">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+	<title>Add/edit a Plomino Action</title>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+	<script type="text/javascript" src="js/plominoaction.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/plominofield.css" />
+</head>
+<body tal:define="parentpath here/REQUEST/parent|nothing;
+                  form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
+                  actionid here/REQUEST/actionid|nothing;">
+                  
+	<div class="dialog-wrapper">
+		<!-- Form which edits the selected field -->
+		<form onsubmit="PlominoActionDialog.submit();" method="post" action="plominofield_submit.htm">
+				
+			<fieldset>
+				<legend>Create a Plomino Field</legend>
+				
+				<label for="actionid">Field ID</label>
+				<input type="text" name="actionid" id="actionid" tal:attributes="value actionid" />
+			</fieldset>
+			
+			<div class="mceActionPanel formControls">
+				<span class="actionButtons">
+					<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
+					<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
+				</span>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>

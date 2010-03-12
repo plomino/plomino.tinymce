@@ -17,7 +17,7 @@
 				ed.addCommand('mcePlominoField', function() {
 					alert("Please save the form before using this button.");
 				});
-		
+			
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			else
 				ed.addCommand('mcePlominoField', function() {
@@ -80,6 +80,11 @@
 				title : 'Add/edit a Plomino Field',
 				cmd : 'mcePlominoField',
 				image : url + '/img/PlominoField.png'
+			});
+			
+			// Disable the button and avoid its reactivation
+			ed.onNodeChange.add(function(ed) {
+				ed.controlManager.setDisabled('plominofield', ed.editorId !== 'FormLayout');
 			});
 
 			// Add a node change handler, selects the button in the UI when a image is selected

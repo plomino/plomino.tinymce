@@ -29,6 +29,7 @@
 			// Disable the button and avoid its reactivation
 			ed.onNodeChange.add(function(ed) {
 				ed.controlManager.setDisabled('plominofield', ed.editorId !== 'FormLayout');
+				ed.controlManager.setDisabled('plominoaction', ed.editorId !== 'FormLayout');
 			});
 		},
 

@@ -1,7 +1,7 @@
 /**
  *
  * @author Sander Kruger
- * @copyright Copyright © 2009, Sander Kruger, All rights reserved.
+ * @copyright Copyright ï¿½ 2009, Sander Kruger, All rights reserved.
  */
 
 (function() {
@@ -23,11 +23,11 @@
 
 				// Check if the start or end of the selection is in an atom
 				sc = ed.dom.getParent(ed.selection.getStart(), function(n) {
-					return ed.dom.hasClass(n, atomicClass);
+					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass");
 				});
 
 				ec = ed.dom.getParent(ed.selection.getEnd(), function(n) {
-					return ed.dom.hasClass(n, atomicClass);
+					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass");
 				});
 				if (atEnd)
 				{

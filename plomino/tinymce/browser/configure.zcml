@@ -14,4 +14,10 @@
         class=".form.PlominoForm"
         permission="zope.Public"
         />
+   <browser:view
+        name="tinyaction"
+        for="Products.CMFPlomino.interfaces.IPlominoAction"
+        class=".action.PlominoAction"
+        permission="zope.Public"
+        />
 </configure>

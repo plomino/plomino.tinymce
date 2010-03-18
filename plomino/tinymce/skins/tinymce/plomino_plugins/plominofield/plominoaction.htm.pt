@@ -11,17 +11,61 @@
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
-                  actionid here/REQUEST/actionid|nothing;">
-                  
+                  actionid here/REQUEST/actionid|nothing;
+                  action python:getattr(form, actionid, None);
+                  adaptedform form/tinyform|nothing;
+                  adaptedaction action/tinyaction|nothing;
+                  actionProperties adaptedaction/getActionProperties|nothing;
+                  actionProperties python:actionProperties or {'actionType': 'OPENFORM', 'actionDisplay': 'LINK', 'content': '', 'hideWhen': '', 'inActionBar': False};
+                  ">
+    
 	<div class="dialog-wrapper">
 		<!-- Form which edits the selected field -->
-		<form onsubmit="PlominoActionDialog.submit();" method="post" action="plominofield_submit.htm">
-				
+		<form onsubmit="PlominoActionDialog.submit();" method="post"
+			tal:attributes="action python:action and action.absolute_url() + '/tinyaction/setActionProperties' or form.absolute_url() + '/tinyform/addAction'">
 			<fieldset>
-				<legend>Create a Plomino Field</legend>
+				<legend>Create a Plomino Action</legend>
 				
 				<label for="actionid">Field ID</label>
 				<input type="text" name="actionid" id="actionid" tal:attributes="value actionid" />
+			</fieldset>
+			
+			<fieldset>
+				<legend>Edit Action Properties</legend>
+				
+				<p>
+					<label for="actionTypesList">Action type</label>
+					<select id="actionTypesList" name="actiontype">
+						<option tal:repeat="type adaptedform/getActionTypes"
+								tal:content="python:type[1]"
+								tal:attributes="value python:type[0]; selected python:type[0]==actionProperties['actionType']"></option>
+					</select>
+				</p>
+				
+				<p>
+					<label for="actionDisplayList">Action display</label>
+					<select id="actionDisplayList" name="actiondisplay">
+						<option tal:repeat="display adaptedform/getActionDisplay"
+								tal:content="python:display[1]"
+								tal:attributes="value python:display[0]; selected python:display[0]==actionProperties['actionDisplay']"></option>
+					</select>
+				</p>
+				
+				<p>
+					<label for="actionContent">Action code</label>
+					<textarea id="actionContent" name="actioncontent" tal:content="python:actionProperties['content']"></textarea>
+				</p>
+				
+				<p>
+					<label for="actionHideWhen">Hide-when formula</label>
+					<textarea id="actionHideWhen" name="actionhidewhen" tal:content="python:actionProperties['hideWhen']"></textarea>
+				</p>
+				
+				<p>
+					<input type="checkbox" id="actionInActionBar" name="actioninactionbar"
+						tal:attributes="checked python:actionProperties['inActionBar']" />
+					<label for="actionInActionBar">Display action in action bar</label>
+				</p>
 			</fieldset>
 			
 			<div class="mceActionPanel formControls">

@@ -54,7 +54,7 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>Edit field preferences</legend>
+				<legend>Edit Field Properties</legend>
 				
 				<input tal:condition="isexistingfield" name="fieldid" type="hidden" tal:attributes="value fieldid" />
 				

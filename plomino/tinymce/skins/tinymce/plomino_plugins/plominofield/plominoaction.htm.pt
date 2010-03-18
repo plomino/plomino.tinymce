@@ -14,10 +14,8 @@
                   actionid here/REQUEST/actionid|nothing;
                   action python:getattr(form, actionid, None);
                   adaptedform form/tinyform|nothing;
-                  adaptedaction action/tinyaction|nothing;
-                  actionProperties adaptedaction/getActionProperties|nothing;
-                  actionProperties python:actionProperties or {'actionType': 'OPENFORM', 'actionDisplay': 'LINK', 'content': '', 'hideWhen': '', 'inActionBar': False};
-                  ">
+                  actionProperties adaptedform/getActionProperties;
+				  ">
     
 	<div class="dialog-wrapper">
 		<!-- Form which edits the selected field -->

@@ -13,17 +13,6 @@ class PlominoAction(object):
         """
         """
         return self
-
-    def getActionProperties(self):
-        """Return properties of an action, or , if no action is bound, properties filled with None
-        """
-        action = self.context.aq_parent.aq_parent;
-        return {'actionType': action.getActionType(),
-                'actionDisplay': action.getActionDisplay(),
-                'content': action.getContent(),
-                'hideWhen': action.getHidewhen(),
-                'inActionBar': action.getInActionBar()
-                }
         
     def setActionProperties(self):
         """Set field properties to their new values. 

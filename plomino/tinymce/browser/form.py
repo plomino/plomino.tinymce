@@ -53,6 +53,25 @@ class PlominoForm(object):
         """Return a list of possible displays for an action.
         """
         return ACTION_DISPLAY
+
+    def getActionProperties(self):
+        """Return properties of an action, or , if no action is given, properties filled with None
+        """
+        action = getattr(self.context, self.request.get("actionid", None), None)
+        if action:
+            return {'actionType': action.getActionType(),
+                    'actionDisplay': action.getActionDisplay(),
+                    'content': action.getContent(),
+                    'hideWhen': action.getHidewhen(),
+                    'inActionBar': action.getInActionBar()
+                    }
+        else:
+             return {'actionType': 'OPENFORM',
+                     'actionDisplay': 'LINK',
+                     'content': '',
+                     'hideWhen': '',
+                     'inActionBar': False
+                     }
      
     def addAction(self):
         """ Add an action to the form. 

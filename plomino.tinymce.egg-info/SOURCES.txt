@@ -20,6 +20,7 @@ plomino/tinymce/configure.zcml
 plomino/tinymce/profiles.zcml
 plomino/tinymce/tests.py
 plomino/tinymce/browser/__init__.py
+plomino/tinymce/browser/action.py
 plomino/tinymce/browser/configure.zcml
 plomino/tinymce/browser/field.py
 plomino/tinymce/browser/form.py

@@ -1,4 +1,4 @@
-from Products.CMFPlomino.config import FIELD_TYPES#, FIELD_MODES
+from Products.CMFPlomino.config import FIELD_TYPES, FIELD_MODES
 from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
 
 class PlominoForm(object):
@@ -23,8 +23,31 @@ class PlominoForm(object):
     def getFieldModes(self):
         """Return a list of possible modes for a field.
         """
-        # replace with "return FIELD_MODES" when available (see import)
-        return [["EDITABLE", "Editable"], ["COMPUTED", "Computed"], ["CREATION", "Computed on creation"], ["DISPLAY", "Computed for display"]]
+        return FIELD_MODES
+
+    def getField(self):
+        """Return a field from the request, or the first field if empty, or None if the specified field doesn't exist. 
+        """
+        fieldid = self.request.get("fieldid", None)
+        if fieldid:
+            return getattr(self.context, fieldid, None)
+        else:
+            return None
+
+    def getFieldProperties(self):
+        """Return properties of an action, or , if no action is given, properties filled with None
+        """
+        field = getattr(self.context, self.request.get("fieldid", None), None)
+        if field:
+            return {'fieldType': field.getFieldType(),
+                    'fieldMode': field.getFieldMode(),
+                    'formula': field.getFormula()
+                    }
+        else:
+             return {'fieldType': 'TEXT',
+                    'fieldMode': 'EDITABLE',
+                    'formula': ''
+                    }
         
     def addField(self):
         """ Add a field to the form. 

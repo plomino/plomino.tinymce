@@ -11,42 +11,40 @@
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
-                  fieldidparam here/REQUEST/fieldid|nothing;
-                  fieldid python:fieldidparam or (len(form.getFields()) > 0 and form.getFields()[0].id) or '';
-                  isexistingfield python:(fieldid in (field.id for field in form.getFields()));
-                  field python:isexistingfield and getattr(form, fieldid);
-                  fieldtype python:isexistingfield and field.FieldType or 'TEXT';
-                  fieldmode python:isexistingfield and field.FieldMode or 'EDITABLE';
-                  fieldformula python:isexistingfield and field.getFormula() or '';
-                  adapted form/tinyform|nothing;">
+                  fieldid here/REQUEST/fieldid|nothing;
+                  adapted form/tinyform|nothing;
+                  fieldproperties adapted/getFieldProperties;
+                  field adapted/getField;">
                   
 	<div class="dialog-wrapper">
 		<!-- Form which selects an existing field -->
-		<fieldset tal:condition="isexistingfield">
+		<fieldset tal:condition="field">
 			<legend>Select a Plomino Field</legend>
 			
-			<label for="plominoFieldId">Field ID</label>
 			<form id="fieldSelection" method="get">
-				<select id="plominoFieldId" name="fieldid" onchange="this.form.submit();">
-					<option
-						tal:repeat="item python:form.getFields()"
-						tal:content="item/id"
-						tal:attributes="value item/id; selected python:item.id==fieldid">a</option>
-				</select>
-				<input name="parent" type="hidden" tal:attributes="value parentpath" />
+				<p>
+					<label for="plominoFieldId">Field ID</label>
+					<select id="plominoFieldId" name="fieldid" onchange="this.form.submit();">
+						<option
+							tal:repeat="item python:form.getFields()"
+							tal:content="item/id"
+							tal:attributes="value item/id; selected python:item.id==fieldid"></option>
+					</select>
+					<input name="parent" type="hidden" tal:attributes="value parentpath" />
+				</p>
 			</form>
 		</fieldset>
 		
-		<fieldset tal:condition="isexistingfield">
+		<fieldset tal:condition="field">
 			<legend>Advanced edition</legend>
 			<a tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Edit the field</a>
 		</fieldset>
 		
 		<!-- Form which edits the selected field -->
 		<form onsubmit="PlominoFieldDialog.submit();" method="post"
-				tal:attributes="action python:isexistingfield and field.absolute_url() + '/tinyfield/setFieldProperties' or form.absolute_url() + '/tinyform/addField'">
+				tal:attributes="action python:field and field.absolute_url() + '/tinyfield/setFieldProperties' or form.absolute_url() + '/tinyform/addField'">
 				
-			<fieldset tal:condition="python:not isexistingfield">
+			<fieldset tal:condition="python:not field">
 				<legend>Create a Plomino Field</legend>
 				
 				<label for="plominoFieldId">Field ID</label>
@@ -56,14 +54,14 @@
 			<fieldset>
 				<legend>Edit Field Properties</legend>
 				
-				<input tal:condition="isexistingfield" name="fieldid" type="hidden" tal:attributes="value fieldid" />
+				<input tal:condition="field" name="fieldid" type="hidden" tal:attributes="value fieldid" />
 				
 				<p>
 					<label for="fieldTypesList">Field type</label>
 					<select id="fieldTypesList" name="fieldtype">
 						<option tal:repeat="type adapted/getFieldTypes"
 								tal:content="python:type[1]"
-								tal:attributes="value python:type[0]; selected python:fieldtype==type[0]"></option>
+								tal:attributes="value python:type[0]; selected python:fieldproperties['fieldType']==type[0]"></option>
 					</select>
 				</p>
 				
@@ -72,13 +70,13 @@
 					<select id="fieldModesList" name="fieldmode">
 						<option tal:repeat="mode adapted/getFieldModes"
 								tal:content="python:mode[1]"
-								tal:attributes="value python:mode[0]; selected python:fieldmode==mode[0]"></option>
+								tal:attributes="value python:mode[0]; selected python:fieldproperties['fieldMode']==mode[0]"></option>
 					</select>
 				</p>
 				
 				<p>
 					<label for="fieldFormula">Formula</label><br />
-					<textarea id="fieldFormula" name="fieldformula" tal:content="fieldformula"></textarea>
+					<textarea id="fieldFormula" name="fieldformula" tal:content="python:fieldproperties['formula']"></textarea>
 				</p>
 			</fieldset>
 			<div class="mceActionPanel formControls">

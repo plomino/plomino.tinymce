@@ -12,16 +12,34 @@
 <body tal:define="parentpath here/REQUEST/parent|nothing;
                   form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
                   actionid here/REQUEST/actionid|nothing;
-                  action python:getattr(form, actionid, None);
-                  adaptedform form/tinyform|nothing;
-                  actionProperties adaptedform/getActionProperties;
+                  adapted form/tinyform|nothing;
+                  actionProperties adapted/getActionProperties;
+                  action adapted/getAction;
 				  ">
     
 	<div class="dialog-wrapper">
-		<!-- Form which edits the selected field -->
+		<!-- Form which selects an existing action -->
+		<fieldset tal:condition="action">
+			<legend>Select a Plomino Action</legend>
+			
+			<form id="actionSelection" method="get">
+				<p>
+					<label for="actionid">Action ID</label>
+					<select id="actionid" name="actionid" onchange="this.form.submit();">
+						<option
+							tal:repeat="item python:form.getActions(None, False)"
+							tal:content="item/id"
+							tal:attributes="value item/id; selected python:item.id==actionid"></option>
+					</select>
+					<input name="parent" type="hidden" tal:attributes="value parentpath" />
+				</p>
+			</form>
+		</fieldset>
+		
+		<!-- Form which edits the selected action -->
 		<form onsubmit="PlominoActionDialog.submit();" method="post"
 			tal:attributes="action python:action and action.absolute_url() + '/tinyaction/setActionProperties' or form.absolute_url() + '/tinyform/addAction'">
-			<fieldset>
+			<fieldset tal:condition="python:not action">
 				<legend>Create a Plomino Action</legend>
 				
 				<label for="actionid">Action ID</label>
@@ -31,10 +49,12 @@
 			<fieldset>
 				<legend>Edit Action Properties</legend>
 				
+				<input tal:condition="action" name="actionid" id="actionid" type="hidden" tal:attributes="value actionid" />
+				
 				<p>
 					<label for="actionTypesList">Action type</label>
 					<select id="actionTypesList" name="actiontype">
-						<option tal:repeat="type adaptedform/getActionTypes"
+						<option tal:repeat="type adapted/getActionTypes"
 								tal:content="python:type[1]"
 								tal:attributes="value python:type[0]; selected python:type[0]==actionProperties['actionType']"></option>
 					</select>
@@ -43,7 +63,7 @@
 				<p>
 					<label for="actionDisplayList">Action display</label>
 					<select id="actionDisplayList" name="actiondisplay">
-						<option tal:repeat="display adaptedform/getActionDisplay"
+						<option tal:repeat="display adapted/getActionDisplay"
 								tal:content="python:display[1]"
 								tal:attributes="value python:display[0]; selected python:display[0]==actionProperties['actionDisplay']"></option>
 					</select>

@@ -14,7 +14,8 @@
                   fieldid here/REQUEST/fieldid|nothing;
                   adapted form/tinyform|nothing;
                   fieldproperties adapted/getFieldProperties;
-                  field adapted/getField;">
+                  field adapted/getField;
+                  ">
                   
 	<div class="dialog-wrapper">
 		<!-- Form which selects an existing field -->
@@ -76,7 +77,7 @@
 				
 				<p>
 					<label for="fieldFormula">Formula</label><br />
-					<textarea id="fieldFormula" name="fieldformula" tal:content="python:fieldproperties['formula']"></textarea>
+					<textarea id="fieldFormula" name="fieldformula" tal:content="python:fieldproperties['formula']" style="resizable: vertical;"></textarea>
 				</p>
 			</fieldset>
 			<div class="mceActionPanel formControls">

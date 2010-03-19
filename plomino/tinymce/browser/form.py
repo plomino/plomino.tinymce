@@ -1,5 +1,7 @@
 from Products.CMFPlomino.config import FIELD_TYPES, FIELD_MODES
 from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
+from Products.CMFPlomino.PlominoAction import PlominoAction
+from Products.CMFPlomino.PlominoField import PlominoField
 
 class PlominoForm(object):
     """
@@ -30,14 +32,22 @@ class PlominoForm(object):
         """
         fieldid = self.request.get("fieldid", None)
         if fieldid:
-            return getattr(self.context, fieldid, None)
+            field = getattr(self.context, fieldid, None)
+            if isinstance(field, PlominoField):
+                return field
+            else:
+                return None
+        
+        fieldsList = self.context.getFields()
+        if len(fieldsList) > 0:
+            return fieldsList[0]
         else:
             return None
 
     def getFieldProperties(self):
-        """Return properties of an action, or , if no action is given, properties filled with None
+        """Return properties of an action, or , if no action is given, properties filled with default values.
         """
-        field = getattr(self.context, self.request.get("fieldid", None), None)
+        field = self.getField()
         if field:
             return {'fieldType': field.getFieldType(),
                     'fieldMode': field.getFieldMode(),
@@ -50,7 +60,7 @@ class PlominoForm(object):
                     }
         
     def addField(self):
-        """ Add a field to the form. 
+        """Add a field to the form. 
         """
         fieldid = self.request.get("fieldid", None)
         fieldtype = self.request.get("fieldtype", "TEXT")
@@ -58,7 +68,7 @@ class PlominoForm(object):
         fieldformula = self.request.get("fieldformula", "")
         
         # self.context is the current form
-        if fieldid and fieldid not in (field.id for field in self.context.getFields()):
+        if fieldid and not hasattr(self.context, fieldid):
             self.context.invokeFactory('PlominoField', Title=fieldid, id=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
             field = self.context.aq_parent.aq_parent.getFormField(fieldid)
             field.setFormula(fieldformula)
@@ -77,10 +87,27 @@ class PlominoForm(object):
         """
         return ACTION_DISPLAY
 
-    def getActionProperties(self):
-        """Return properties of an action, or , if no action is given, properties filled with None
+    def getAction(self):
+        """Return an action from the request, or the first action if empty, or None if the specified action doesn't exist. 
         """
-        action = getattr(self.context, self.request.get("actionid", None), None)
+        actionid = self.request.get("actionid", None)
+        if actionid:
+            action = getattr(self.context, actionid, None)
+            if isinstance(action, PlominoAction):
+                return action
+            else:
+                return None
+        
+        actionsList = self.context.getActions(None, False)
+        if len(actionsList) > 0:
+            return actionsList[0]
+        else:
+            return None
+
+    def getActionProperties(self):
+        """Return properties of an action, or , if no action is given, properties filled with default values.
+        """
+        action = self.getAction()
         if action:
             return {'actionType': action.getActionType(),
                     'actionDisplay': action.getActionDisplay(),
@@ -107,7 +134,7 @@ class PlominoForm(object):
         inActionBar = self.request.get("actioninactionbar", None) == 'on'
         
         # self.context is the current form
-        if actionid and actionid not in (action.id for action in self.context.getActions(None, False)):
+        if actionid and not hasattr(self.context, actionid):
             self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
             #action = getattr(self.context.aq_parent.aq_parent, actionid)
             #field.setTitle(fieldid)

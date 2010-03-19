@@ -16,18 +16,15 @@ class PlominoField(object):
         """Set field properties to their new values. 
         """
         fieldid = self.request.get("fieldid", None)
-        fieldtype = self.request.get("fieldtype", None)
-        fieldmode = self.request.get("fieldmode", None)
-        fieldformula = self.request.get("fieldformula", None)
+        fieldtype = self.request.get("fieldtype", 'TEXT')
+        fieldmode = self.request.get("fieldmode", 'EDITABLE')
+        fieldformula = self.request.get("fieldformula", '')
         
         # self.context is the current field
         if fieldid and fieldid == self.context.id:
-            if fieldtype:
-                self.context.setFieldType(fieldtype)
-            if fieldmode:
-                self.context.setFieldMode(fieldmode)
-            if fieldformula:
-                self.context.setFormula(fieldformula)
+            self.context.setFieldType(fieldtype)
+            self.context.setFieldMode(fieldmode)
+            self.context.setFormula(fieldformula)
             self.context.aq_parent.aq_parent.at_post_edit_script()
         
         self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")

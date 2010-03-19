@@ -75,7 +75,11 @@ class PlominoForm(object):
             field.at_post_create_script()
             #field.setTitle(fieldid)
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")
+        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=field&value=" + fieldid)
+            
+#        else:
+#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+            
 
     def getActionTypes(self):
         """Return a list of possible types for an action.
@@ -139,6 +143,10 @@ class PlominoForm(object):
             #action = getattr(self.context.aq_parent.aq_parent, actionid)
             #field.setTitle(fieldid)
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")
+        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
+            
+#        else:
+#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+            
 
     

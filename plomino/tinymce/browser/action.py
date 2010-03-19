@@ -34,4 +34,8 @@ class PlominoAction(object):
             
             self.context.aq_parent.aq_parent.at_post_edit_script()
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plominofield_submit.htm")
+        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
+
+#        else:
+#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+            

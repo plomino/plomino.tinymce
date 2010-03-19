@@ -2,9 +2,16 @@ Changelog
 =========
 
 0.1alpha
--------------------
+--------
 
 - Initial release
 - Packaged in an egg
 - Plomino field can be edited from the TinyMCE editor
 - It can also be created
+
+0.2alpha
+--------
+
+- Actions can be created and edited from the TinyMCE editor
+- Buttons are usable only on already created forms
+  

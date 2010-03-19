@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: plomino.tinymce
-Version: 0.1
+Version: 0.2
 Summary: TinyMCE Plomino Embedded Plugin
 Home-page: http://svn.plone.org/svn/collective/
 Author: Romaric BREIL
@@ -13,23 +13,31 @@ Description: Introduction
         easily Plomino objects (fields, actions and hidewhen) from TinyMCE interface.
         
         
-        Plomino Fields Management
-        =========================
+        Plomino Fields and Actions Management
+        =====================================
         When a field is selected in the editor, a button in the interface of TinyMCE
         allows to change some properties of this field.
         By highlighting some text and clicking the same button, a field can be created
         and its properties set (its name will be the selected text).
         
+        An action can also be created and modified using a similar mean.
+        
         Changelog
         =========
         
         0.1alpha
-        -------------------
+        --------
         
         - Initial release
         - Packaged in an egg
         - Plomino field can be edited from the TinyMCE editor
         - It can also be created
+        
+        0.2alpha
+        --------
+        
+        - Actions can be created and edited from the TinyMCE editor
+        - Buttons are usable only on already created forms
         
 Platform: UNKNOWN
 Classifier: Framework :: Plone

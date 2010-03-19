@@ -24,7 +24,7 @@
 			<fieldset>
 				<legend>Create a Plomino Action</legend>
 				
-				<label for="actionid">Field ID</label>
+				<label for="actionid">Action ID</label>
 				<input type="text" name="actionid" id="actionid" tal:attributes="value actionid" />
 			</fieldset>
 			

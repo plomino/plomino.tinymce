@@ -3,7 +3,14 @@
 from windmill.authoring import WindmillTestClient
 
 """These tests must be loaded by Windmill.
-Command example: $ windmill shell firefox http://localhost:8080 field_creation.py
+Command example: $ windmill shell firefox http://localhost:8080 loadtest=field_creation.py
+
+CAUTION: there is a bug in Windmill 1.3 while changing the value of a select.
+The new value of a select that must be changed is not set. It causes a bug in
+the test suite, which can't finish normally.
+
+SOLUTION: After the script is loaded, and before launching it, change manually
+the value of this select (the only one), setting its value (val) to CLOSE.
 """
 
 def test_login():
@@ -57,3 +64,33 @@ def test_createField():
     client.click(id=u'insert')
     client.click(name=u'form.button.save')
     client.waits.forPageLoad(timeout=u'20000')
+
+def test_createAction():
+    client = WindmillTestClient(__name__)
+
+    client.waits.forElement(link=u'Edit', timeout=u'8000')
+    client.click(link=u'Edit')
+    client.waits.forPageLoad(timeout=u'20000')
+    client.waits.forElement(xpath=u"//body[@id='content']", timeout=u'8000')
+    client.click(xpath=u"//body[@id='content']/p")
+    client.click(xpath=u"//a[@id='FormLayout_plominoaction']/img")
+    client.waits.forElement(timeout=u'5000', id=u'actionid')
+    client.type(text=u'action1', id=u'actionid')
+    client.select(val=u'CLOSE', id=u'actionTypesList')
+    client.click(id=u'insert')
+    client.click(name=u'form.button.save')
+    client.waits.forPageLoad(timeout=u'20000')
+
+def test_fieldCreated():
+    client = WindmillTestClient(__name__)
+
+    client.click(link=u'Contents')
+    client.waits.forPageLoad(timeout=u'20000')
+    client.waits.forElement(xpath=u"//a[contains(@href, 'testform/field1')]", timeout=u'8000')
+
+def test_actionCreated():
+    client = WindmillTestClient(__name__)
+
+    client.click(link=u'Contents')
+    client.waits.forPageLoad(timeout=u'20000')
+    client.waits.forElement(xpath=u"//a[contains(@href, 'testform/action1')]", timeout=u'8000')

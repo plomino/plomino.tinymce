@@ -8,6 +8,8 @@ var PlominoDialog = {
 			var plominoClass = 'plominoActionClass';
 		else if (type == 'field')
 			var plominoClass = 'plominoFieldClass';
+		else if (type == 'subform')
+			var plominoClass = 'plominoSubformClass';
 		else
 			return;
 		

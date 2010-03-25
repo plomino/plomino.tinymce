@@ -23,11 +23,11 @@
 
 				// Check if the start or end of the selection is in an atom
 				sc = ed.dom.getParent(ed.selection.getStart(), function(n) {
-					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass");
+					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass") || ed.dom.hasClass(n, "plominoSubformClass");
 				});
 
 				ec = ed.dom.getParent(ed.selection.getEnd(), function(n) {
-					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass");
+					return ed.dom.hasClass(n, "plominoFieldClass") || ed.dom.hasClass(n, "plominoActionClass") || ed.dom.hasClass(n, "plominoSubformClass");
 				});
 				if (atEnd)
 				{

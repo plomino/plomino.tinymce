@@ -155,4 +155,10 @@ class PlominoForm(object):
             
         else:
             self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_action")
-          
+        
+    def getSubForms(self):
+        form = self.context.aq_parent.aq_parent
+        subforms = form.getParentDatabase().getForms()
+        subforms.remove(form)
+        return subforms
+    

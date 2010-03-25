@@ -25,11 +25,17 @@
 				onclick : function() { editFunction(ed, url, 'action'); },
 				image : url + '/img/PlominoAction.png'
 			});
+			ed.addButton('plominosubform', {
+				title : 'Add a Plomino Sub-form',
+				onclick : function() { editFunction(ed, url, 'subform'); },
+				image : url + '/img/PlominoForm.png'
+			});
 			
 			// Disable the button and avoid its reactivation
 			ed.onNodeChange.add(function(ed) {
 				ed.controlManager.setDisabled('plominofield', ed.editorId !== 'FormLayout');
 				ed.controlManager.setDisabled('plominoaction', ed.editorId !== 'FormLayout');
+				ed.controlManager.setDisabled('plominosubform', ed.editorId !== 'FormLayout');
 			});
 		},
 
@@ -71,6 +77,11 @@
 				var elementClass = 'plominoActionClass';
 				var elementEditionPage = '/plominoaction.htm';
 				var elementIdName = 'actionid';
+			}
+			else if (elementType === "subform") {
+				var elementClass = 'plominoSubformClass';
+				var elementEditionPage = '/plominosubform.htm';
+				var elementIdName = 'subformid';
 			}
 			else
 				return;

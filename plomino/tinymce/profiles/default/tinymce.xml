@@ -128,6 +128,7 @@
   <customtoolbarbuttons>
   <toolbar_plominofield value="plominofield"/>
   <toolbar_plominofield value="plominoaction"/>
+  <toolbar_plominofield value="plominosubform"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

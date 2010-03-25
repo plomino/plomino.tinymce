@@ -27,7 +27,7 @@ class PlominoField(object):
             self.context.setFormula(fieldformula)
             self.context.aq_parent.aq_parent.at_post_edit_script()
             
-            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=field&value=" + fieldid)
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid)
                 
         else:
             self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_field")

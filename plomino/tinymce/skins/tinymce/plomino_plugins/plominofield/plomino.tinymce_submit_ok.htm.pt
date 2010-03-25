@@ -10,10 +10,10 @@
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 	<script type="text/javascript" src="js/plomino.tinymce.js"></script>
-	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit($type, $value);"></script>
+	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
 </head>
 <body onload="tinyMCEPopup.close();">
-	<div class="dialog-wrapper">   
+	<div class="dialog-wrapper">
 		<p>Closing the popup.</p>
 	</div>
 </body>

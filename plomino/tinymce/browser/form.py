@@ -76,7 +76,7 @@ class PlominoForm(object):
                 field.at_post_create_script()
                 #field.setTitle(fieldid)
             
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=field&value=" + fieldid)
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid)
             
             else:
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=object_exists")
@@ -148,7 +148,7 @@ class PlominoForm(object):
                 #action = getattr(self.context.aq_parent.aq_parent, actionid)
                 #field.setTitle(fieldid)
         
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=action&value=" + actionid)
             
             else:
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=object_exists")

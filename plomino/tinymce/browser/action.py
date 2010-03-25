@@ -34,8 +34,8 @@ class PlominoAction(object):
             
             self.context.aq_parent.aq_parent.at_post_edit_script()
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
 
-#        else:
-#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+        else:
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_action")
             

@@ -68,17 +68,21 @@ class PlominoForm(object):
         fieldformula = self.request.get("fieldformula", "")
         
         # self.context is the current form
-        if fieldid and not hasattr(self.context, fieldid):
-            self.context.invokeFactory('PlominoField', Title=fieldid, id=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
-            field = self.context.aq_parent.aq_parent.getFormField(fieldid)
-            field.setFormula(fieldformula)
-            field.at_post_create_script()
-            #field.setTitle(fieldid)
-        
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=field&value=" + fieldid)
+        if fieldid:
+            if not hasattr(self.context, fieldid):
+                self.context.invokeFactory('PlominoField', Title=fieldid, id=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
+                field = self.context.aq_parent.aq_parent.getFormField(fieldid)
+                field.setFormula(fieldformula)
+                field.at_post_create_script()
+                #field.setTitle(fieldid)
             
-#        else:
-#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=field&value=" + fieldid)
+            
+            else:
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=object_exists")
+            
+        else:
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_field")
             
 
     def getActionTypes(self):
@@ -138,15 +142,17 @@ class PlominoForm(object):
         inActionBar = self.request.get("actioninactionbar", None) == 'on'
         
         # self.context is the current form
-        if actionid and not hasattr(self.context, actionid):
-            self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
-            #action = getattr(self.context.aq_parent.aq_parent, actionid)
-            #field.setTitle(fieldid)
+        if actionid:
+            if not hasattr(self.context, actionid):
+                self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
+                #action = getattr(self.context.aq_parent.aq_parent, actionid)
+                #field.setTitle(fieldid)
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm")#?type=action&value=" + actionid)
             
-#        else:
-#            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm")
+            else:
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=object_exists")
             
-
-    
+        else:
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_action")
+          

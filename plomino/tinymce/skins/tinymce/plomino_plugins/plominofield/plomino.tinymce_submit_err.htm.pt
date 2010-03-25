@@ -7,10 +7,15 @@
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 </head>
-<body>
+<body tal:define="error here/REQUEST/error|nothing;">
 	<div class="dialog-wrapper">
 		<form>
-			<p>There was an error in submitted data.</p>
+			<fieldset>
+				<legend>Error in submitted data</legend>
+				<p tal:condition="python:error=='no_field'">The field name is incorrect.</p>
+				<p tal:condition="python:error=='no_action'">The action name is incorrect.</p>
+				<p tal:condition="python:error=='object_exists'">An object with the same name already exists.</p>
+			</fieldset>
 			<p>
 				<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel"
 					onclick="tinyMCEPopup.close();" />

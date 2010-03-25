@@ -20,4 +20,10 @@
         class=".action.PlominoAction"
         permission="zope.Public"
         />
+   <browser:view
+        name="tinyhidewhen"
+        for="Products.CMFPlomino.interfaces.IPlominoHidewhen"
+        class=".hidewhen.PlominoHidewhen"
+        permission="zope.Public"
+        />
 </configure>

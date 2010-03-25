@@ -2,6 +2,7 @@ from Products.CMFPlomino.config import FIELD_TYPES, FIELD_MODES
 from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
 from Products.CMFPlomino.PlominoAction import PlominoAction
 from Products.CMFPlomino.PlominoField import PlominoField
+from Products.CMFPlomino.PlominoHidewhen import PlominoHidewhen
 
 class PlominoForm(object):
     """
@@ -147,6 +148,8 @@ class PlominoForm(object):
                 self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
                 #action = getattr(self.context.aq_parent.aq_parent, actionid)
                 #field.setTitle(fieldid)
+                action = getattr(self.context.aq_parent.aq_parent, actionid)
+                action.at_post_edit_script()
         
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=action&value=" + actionid)
             
@@ -157,8 +160,61 @@ class PlominoForm(object):
             self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_action")
         
     def getSubForms(self):
+        """Returns a list of forms from the parent database, without the current form
+        """
         form = self.context.aq_parent.aq_parent
         subforms = form.getParentDatabase().getForms()
         subforms.remove(form)
         return subforms
     
+    def getHidewhen(self):
+        """Returns a hide-when formula from the request, or the first hide-when formula if empty, or None if the specified hide-when doesn't exist. 
+        """
+        hidewhenid = self.request.get("hidewhenid", None)
+        
+        if self.request.get("create", False):
+            return None
+        
+        if hidewhenid:
+            hidewhen = getattr(self.context, hidewhenid, None)
+            if isinstance(hidewhen, PlominoHidewhen):
+                return hidewhen
+            else:
+                return None
+        
+        hidewhenList = self.context.getHidewhenFormulas()
+        if len(hidewhenList) > 0:
+            return hidewhenList[0]
+        else:
+            return None
+
+    def getHidewhenFormula(self):
+        """Returns properties of a hide-when formula, or, if no hide-when formula is given, properties filled with default values.
+        """
+        hidewhen = self.getHidewhen()
+        if hidewhen:
+            return hidewhen.getFormula()
+        else:
+             return ''
+         
+    def addHidewhen(self):
+        """ Add a hide-when to the form. 
+        """
+        hidewhenid = self.request.get("hidewhenid", None)
+        hidewhenformula = self.request.get("hidewhenformula", '')
+        
+        # self.context is the current form
+        if hidewhenid:
+            if not hasattr(self.context, hidewhenid):
+                self.context.invokeFactory('PlominoHidewhen', Title=hidewhenid, id=hidewhenid, Formula=hidewhenformula)
+#                hidewhen = getattr(self.context.aq_parent.aq_parent, hidewhenid)
+#                hidewhen.at_post_edit_script()
+
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + hidewhenid)
+            
+            else:
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=object_exists")
+            
+        else:
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_err.htm?error=no_hidewhen")
+        

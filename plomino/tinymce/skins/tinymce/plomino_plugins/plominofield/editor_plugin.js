@@ -12,7 +12,7 @@
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
 		init : function(ed, url) {
-			var editFunction = this.editFormElement;
+		var editFunction = this.editFormElement;
 		
 			// Register buttons
 			ed.addButton('plominofield', {
@@ -30,12 +30,18 @@
 				onclick : function() { editFunction(ed, url, 'subform'); },
 				image : url + '/img/PlominoForm.png'
 			});
+			ed.addButton('plominohidewhen', {
+				title : 'Add a Plomino Hiden-when zone',
+				onclick : function() { editFunction(ed, url, 'hidewhen'); },
+				image : url + '/img/PlominoHideWhen.png'
+			});
 			
 			// Disable the button and avoid its reactivation
 			ed.onNodeChange.add(function(ed) {
 				ed.controlManager.setDisabled('plominofield', ed.editorId !== 'FormLayout');
 				ed.controlManager.setDisabled('plominoaction', ed.editorId !== 'FormLayout');
 				ed.controlManager.setDisabled('plominosubform', ed.editorId !== 'FormLayout');
+				ed.controlManager.setDisabled('plominohidewhen', ed.editorId !== 'FormLayout');
 			});
 		},
 
@@ -54,7 +60,7 @@
 //		},
 		
 		/**
-		 * Shows the field or action editor
+		 * Shows the field, action or subform editor
 		 *
 		 * @param {Object} ed Editor instance.
 		 * @param {String} url Source url.
@@ -83,6 +89,11 @@
 				var elementEditionPage = '/plominosubform.htm';
 				var elementIdName = 'subformid';
 			}
+			else if (elementType === "hidewhen") {
+				var elementClass = 'plominoHidewhenClass';
+				var elementEditionPage = '/plominohidewhen.htm';
+				var elementIdName = 'hidewhenid';
+			}
 			else
 				return;
 			
@@ -90,12 +101,20 @@
 			// Select the parent node of the selection
 			var selection = ed.selection.getNode();
 			// If the node is a <span class="plominoFieldClass"/>, select all its content
-			if (tinymce.DOM.hasClass(selection, elementClass))
+			if (tinymce.DOM.hasClass(selection, elementClass)) 
 			{
 				ed.selection.select(selection);
 				var elementId = selection.firstChild.nodeValue;
+				
+				// hide-when zones start with start:hidewhenid and finish with end:hidewhenid
+				if (elementType === "hidewhen")
+				{
+					var splittedId = elementId.split(':');
+					if (splittedId.length > 1)
+						elementId = splittedId[1];
+				}
 			}
-			else
+			else if (elementType !== "hidewhen")
 			{
 				// If the selection contains a <span class="plominoFieldClass"/>, select all its content
 				nodes = tinymce.DOM.select('span.' + elementClass, selection);
@@ -125,6 +144,10 @@
 				// Else, keep the selection 
 				else
 					var elementId = ed.selection.getContent();
+			}
+			else
+			{
+				var elementId = '';
 			}
 			
 			ed.windowManager.open({

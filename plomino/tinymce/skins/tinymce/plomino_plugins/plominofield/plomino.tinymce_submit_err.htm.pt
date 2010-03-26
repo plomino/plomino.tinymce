@@ -14,6 +14,7 @@
 				<legend>Error in submitted data</legend>
 				<p tal:condition="python:error=='no_field'">The field name is incorrect.</p>
 				<p tal:condition="python:error=='no_action'">The action name is incorrect.</p>
+				<p tal:condition="python:error=='no_hidewhen'">The hide-when name is incorrect.</p>
 				<p tal:condition="python:error=='object_exists'">An object with the same name already exists.</p>
 			</fieldset>
 			<p>

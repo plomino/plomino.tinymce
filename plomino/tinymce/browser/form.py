@@ -74,8 +74,8 @@ class PlominoForm(object):
                 self.context.invokeFactory('PlominoField', Title=fieldid, id=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
                 field = self.context.aq_parent.aq_parent.getFormField(fieldid)
                 field.setFormula(fieldformula)
+                field.setTitle(fieldid)
                 field.at_post_create_script()
-                #field.setTitle(fieldid)
             
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid)
             
@@ -146,10 +146,10 @@ class PlominoForm(object):
         if actionid:
             if not hasattr(self.context, actionid):
                 self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
-                #action = getattr(self.context.aq_parent.aq_parent, actionid)
-                #field.setTitle(fieldid)
                 action = getattr(self.context.aq_parent.aq_parent, actionid)
-                action.at_post_edit_script()
+                action.setTitle(actionid)
+                #action = getattr(self.context.aq_parent.aq_parent, actionid)
+                #action.at_post_edit_script()
         
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=action&value=" + actionid)
             
@@ -207,7 +207,8 @@ class PlominoForm(object):
         if hidewhenid:
             if not hasattr(self.context, hidewhenid):
                 self.context.invokeFactory('PlominoHidewhen', Title=hidewhenid, id=hidewhenid, Formula=hidewhenformula)
-#                hidewhen = getattr(self.context.aq_parent.aq_parent, hidewhenid)
+                hidewhen = getattr(self.context.aq_parent.aq_parent, hidewhenid)
+                hidewhen.setTitle(hidewhenid)
 #                hidewhen.at_post_edit_script()
 
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + hidewhenid)

@@ -54,7 +54,7 @@
 			<fieldset>
 				<legend>Edit Field Properties</legend>
 				
-				<input tal:condition="field" name="fieldid" type="hidden" tal:attributes="value fieldid" />
+				<input tal:condition="field" name="fieldid" type="hidden" tal:attributes="value field/id" />
 				
 				<p>
 					<label for="fieldTypesList">Field type</label>

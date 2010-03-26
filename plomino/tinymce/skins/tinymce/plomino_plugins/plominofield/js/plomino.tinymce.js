@@ -50,7 +50,7 @@ var PlominoDialog = {
 					selection.firstChild.nodeValue = 'start:' + value;
 					
 					for (; i < hidewhens.length; i++) {
-						if (hidewhens[i].firstChild.nodeValue == 'end:' + oldId) {
+						if (hidewhens[i].firstChild && hidewhens[i].firstChild.nodeValue == 'end:' + oldId) {
 							hidewhens[i].firstChild.nodeValue = 'end:' + value;
 							break;
 						}
@@ -61,7 +61,7 @@ var PlominoDialog = {
 					selection.firstChild.nodeValue = 'end:' + value;
 					
 					for (; i >= 0; i--) {
-						if (hidewhens[i].firstChild.nodeValue == 'start:' + oldId) {
+						if (hidewhens[i].firstChild && hidewhens[i].firstChild.nodeValue == 'start:' + oldId) {
 							hidewhens[i].firstChild.nodeValue = 'start:' + value;
 							break;
 						}
@@ -69,11 +69,13 @@ var PlominoDialog = {
 				}
 			}
 			
-			else
+			else {
 				// String to add in the editor
 				var zone = '<span class="plominoHidewhenClass">start:' + value + '</span>' + ed.selection.getContent() + '<span class="plominoHidewhenClass">end:' + value + '</span>';
-			
-			ed.execCommand('mceInsertContent', false, zone, {skip_undo : 1});
+				ed.execCommand('mceInsertContent', false, zone, {skip_undo : 1});
+			}
 		}
+		
+		tinyMCEPopup.close();
 	}
 }

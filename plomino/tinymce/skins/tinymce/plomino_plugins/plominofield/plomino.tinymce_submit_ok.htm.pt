@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="js/plomino.tinymce.js"></script>
 	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
 </head>
-<body onload="tinyMCEPopup.close();">
+<body>
 	<div class="dialog-wrapper">
 		<p>Closing the popup.</p>
 	</div>

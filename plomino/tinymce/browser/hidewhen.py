@@ -21,4 +21,4 @@ class PlominoHidewhen(object):
         self.context.setFormula(hidewhenformula)
         self.context.aq_parent.aq_parent.at_post_edit_script()
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + self.context.id)
+        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + self.context.id)

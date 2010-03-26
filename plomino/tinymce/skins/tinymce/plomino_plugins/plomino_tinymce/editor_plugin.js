@@ -153,8 +153,8 @@
 			ed.windowManager.open({
 				// GET the parent pathname (part of the URL) and the field selected in the editor
 				file : url + elementEditionPage + '?parent=' + location.pathname + '&' + elementIdName + '=' + elementId,
-				width : 600 + parseInt(ed.getLang('plominofield.delta_width', 0)),
-				height : 400 + parseInt(ed.getLang('plominofield.delta_height', 0)),
+				width : 600 + parseInt(ed.getLang('plomino_tinymce.delta_width', 0)),
+				height : 400 + parseInt(ed.getLang('plomino_tinymce.delta_height', 0)),
 				inline : 1
 			}, {
 				plugin_url : url/*, // Plugin absolute URL

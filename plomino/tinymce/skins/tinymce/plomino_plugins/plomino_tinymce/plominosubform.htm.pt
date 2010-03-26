@@ -17,7 +17,7 @@
                   
 	<div class="dialog-wrapper">
 		<!-- Form which edits the selected field -->
-		<form method="post" tal:attributes="action python: baseurl + '/plomino_plugins/plominofield/plomino.tinymce_submit_ok.htm'">
+		<form method="post" tal:attributes="action python: baseurl + '/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm'">
 			<fieldset>
 				<legend>Add a sub-form</legend>
 				

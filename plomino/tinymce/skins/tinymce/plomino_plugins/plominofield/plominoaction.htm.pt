@@ -48,8 +48,6 @@
 			<fieldset>
 				<legend>Edit Action Properties</legend>
 				
-				<input tal:condition="action" name="actionid" type="hidden" tal:attributes="value action/id" />
-				
 				<p>
 					<label for="actionTypesList">Action type</label>
 					<select id="actionTypesList" name="actiontype">

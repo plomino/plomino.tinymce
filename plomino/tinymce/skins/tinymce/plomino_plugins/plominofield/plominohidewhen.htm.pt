@@ -52,8 +52,6 @@
 			<fieldset>
 				<legend>Edit Hide-when Formula</legend>
 				
-				<input tal:condition="hidewhen" name="hidewhenid" type="hidden" tal:attributes="value hidewhen/id" />
-				
 				<p>
 					<label for="hidewhenFormula">Hide-when Formula</label>
 					<textarea id="hidewhenFormula" name="hidewhenformula" tal:content="hidewhenFormula"></textarea>

@@ -13,7 +13,7 @@
       name="default"
       title="Plomino TinyMCE Integration"
       directory="profiles/default"
-      description="Extension profile for PlominoField."
+      description="Extension profile for Plomino TinyMCE Integration."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <cmf:registerDirectory

@@ -1,8 +1,8 @@
 (function() {
 	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('plominofield');
+	tinymce.PluginManager.requireLangPack('plomino_tinymce');
 
-	tinymce.create('tinymce.plugins.PlominoFieldPlugin', {
+	tinymce.create('tinymce.plugins.PlominoPlugin', {
 		/**
 		 * Initializes the plugin, this will be executed after the plugin has been created.
 		 * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -180,5 +180,5 @@
 	});
 
 	// Register plugin
-	tinymce.PluginManager.add('plominofield', tinymce.plugins.PlominoFieldPlugin);
+	tinymce.PluginManager.add('plomino_tinymce', tinymce.plugins.PlominoPlugin);
 })();

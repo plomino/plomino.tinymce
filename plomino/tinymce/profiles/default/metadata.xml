@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<metadata>
+	<version>1</version>
+	<description>Plomino.TinyMCE default installation profile</description>
+	<dependencies>
+		<dependency>profile-Products.TinyMCE:TinyMCE</dependency>
+		<dependency>profile-Products.CMFPlomino:default</dependency>
+	</dependencies>
+</metadata>

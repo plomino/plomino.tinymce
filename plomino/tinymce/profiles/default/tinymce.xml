@@ -31,7 +31,7 @@
   <customplugins>
     <element value="ploneimage"/>
     <element value="plonelink"/>
-    <element value="plominofield|/plomino_plugins/plominofield/editor_plugin.js"/>
+    <element value="plomino_tinymce|/plomino_plugins/plomino_tinymce/editor_plugin.js"/>
     <element value="atomic|/plomino_plugins/atomic/editor_plugin.js"/>
   </customplugins>
   <entity_encoding value="raw"/>
@@ -126,10 +126,10 @@
   <toolbar_external value="False"/>
   <toolbar_cleanup value="False"/>
   <customtoolbarbuttons>
-  <toolbar_plominofield value="plominofield"/>
-  <toolbar_plominofield value="plominoaction"/>
-  <toolbar_plominofield value="plominosubform"/>
-  <toolbar_plominofield value="plominohidewhen"/>
+  <toolbar_plomino_tinymce value="plominofield"/>
+  <toolbar_plomino_tinymce value="plominoaction"/>
+  <toolbar_plomino_tinymce value="plominosubform"/>
+  <toolbar_plomino_tinymce value="plominohidewhen"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

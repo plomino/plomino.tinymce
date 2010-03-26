@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<import-steps>
+
+ <import-step 
+    id="plomino.tinymce-postInstall" 
+    handler="plomino.tinymce.setuphandlers.postInstall"
+    title="manual coded post-install for plomino.tinymce"
+    version="2010-03-26T14:27:49.907875">
+   <dependency step="plone-final"/>
+   manual coded post-install for plomino.tinymce
+ </import-step>
+
+<!-- ##code-section ADDITIONALSTEPS -->
+dependency step="plone-final"
+<!-- ##/code-section ADDITIONALSTEPS --> 
+
+</import-steps>
+ 

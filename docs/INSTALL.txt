@@ -1,5 +1,5 @@
 Plomino TinyMCE Integration Installation
-----------------------------
+----------------------------------------
 
 To install plomino.tinymce into the global Python environment (or a workingenv),
 using a traditional Zope 2 instance, you can do this:
@@ -55,7 +55,12 @@ from another package's configure.zcml file.
 Integration in Plone
 ====================
 
-In the Plone site -> "Site Setup" -> "Add-on Products" page, install successively
-TinyMCE, CMFPlomino, and Plomino TinyMCE Integration. If everithing is installed
-in the same operation, some problems can occur (TinyMCE not loaded, buttons not
-in the toolbar...)
+In the Plone site -> "Site Setup" -> "Add-on Products" page, install Plomino
+TinyMCE Integration. You can omit to install Plomino first, the plugin will
+install it automatically.
+
+Update from an older version
+============================
+
+You have to remove and add the product (only in Plone). You can do it in the
+same page than above.

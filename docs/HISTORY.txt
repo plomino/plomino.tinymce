@@ -14,4 +14,10 @@ Changelog
 
 - Actions can be created and edited from the TinyMCE editor
 - Buttons are usable only on already created forms
-  
+
+0.3alpha
+--------
+
+- Error messages are displayed when needed
+- Sub-forms can be added in the editor
+- Hide-when zones can be added and edited in TinyMCE

@@ -81,6 +81,22 @@ def test_createAction():
     client.click(name=u'form.button.save')
     client.waits.forPageLoad(timeout=u'20000')
 
+def test_createHidewhen():
+    client = WindmillTestClient(__name__)
+
+    client.click(link=u'Edit')
+    client.waits.forPageLoad(timeout=u'20000')
+    client.waits.forElement(xpath=u"//body[@id='content']", timeout=u'8000')
+    client.click(xpath=u"//body[@id='content']")
+    client.click(id=u'FormLayout_plominohidewhen')
+    client.waits.forElement(timeout=u'5000', id=u'hidewhenid')
+    client.type(text=u'hidewhen1', id=u'hidewhenid')
+    client.waits.forElement(timeout=u'5000', id=u'hidewhenFormula')
+    client.type(text=u'False', id=u'hidewhenFormula')
+    client.click(id=u'insert')
+    client.click(name=u'form.button.save')
+    client.waits.forPageLoad(timeout=u'20000')
+
 def test_fieldCreated():
     client = WindmillTestClient(__name__)
 
@@ -94,3 +110,10 @@ def test_actionCreated():
     client.click(link=u'Contents')
     client.waits.forPageLoad(timeout=u'20000')
     client.waits.forElement(xpath=u"//a[contains(@href, 'testform/action1')]", timeout=u'8000')
+
+def test_hidewhenCreated():
+    client = WindmillTestClient(__name__)
+
+    client.click(link=u'Contents')
+    client.waits.forPageLoad(timeout=u'20000')
+    client.waits.forElement(xpath=u"//a[contains(@href, 'testform/hidewhen1')]", timeout=u'8000')

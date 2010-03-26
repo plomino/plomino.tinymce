@@ -18,7 +18,11 @@ var PlominoDialog = {
 			
 			// Insert or replace the selection
 			tinyMCEPopup.restoreSelection();
-			ed.execCommand('mceInsertContent', false, span, {skip_undo : 1});
+			var selection = ed.selection.getNode();
+			if (tinymce.DOM.hasClass(selection, 'plominoActionClass') || tinymce.DOM.hasClass(selection, 'plominoFieldClass') || tinymce.DOM.hasClass(selection, 'plominoSubformClass'))
+				ed.dom.setOuterHTML(selection, span);
+			else
+				ed.execCommand('mceInsertContent', false, span, {skip_undo : 1});
 		}
 		else if (type == "hidewhen")
 		{

@@ -1,3 +1,0 @@
-setuptools
-Plomino
-Products.TinyMCE

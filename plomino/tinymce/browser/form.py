@@ -76,8 +76,8 @@ class PlominoForm(object):
                 field.setFormula(fieldformula)
                 field.setTitle(fieldid)
                 field.at_post_create_script()
-            
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid)
+                
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid + "&fieldurl=" + "/".join(field.getPhysicalPath()))
             
             else:
                 self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")

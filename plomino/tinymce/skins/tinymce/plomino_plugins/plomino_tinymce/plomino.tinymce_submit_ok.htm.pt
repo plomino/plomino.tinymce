@@ -12,9 +12,23 @@
 	<script type="text/javascript" src="js/plomino.tinymce.js"></script>
 	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
 </head>
-<body>
+<body tal:define="fieldurl here/REQUEST/fieldurl|nothing;">
 	<div class="dialog-wrapper">
-		<p>Closing the popup.</p>
+		<form tal:condition="fieldurl">
+			<fieldset tal:define="field python:here.restrictedTraverse(fieldurl);">
+				<legend>Advanced edition</legend>
+				<p>
+					<a tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Edit the field</a><br />
+					<a tal:attributes="href python:field.absolute_url() + '/' + field.getFieldType().lower() + 'settings'"
+						target="_blank">Edit field settings</a>
+				</p>
+			</fieldset>
+			
+			<p>
+				<input type="button" id="close" class="context" name="close" value="Close" onclick="tinyMCEPopup.close();" />
+			</p>
+		</form>
+		<script type="text/javascript" tal:condition="python:not fieldurl">tinyMCEPopup.close();</script>
 	</div>
 </body>
 </html>

@@ -80,6 +80,7 @@ var PlominoDialog = {
 			}
 		}
 		
-		tinyMCEPopup.close();
+		if (type !== "field")
+			tinyMCEPopup.close();
 	}
 }

@@ -118,14 +118,16 @@ class PlominoForm(object):
         """
         action = self.getAction()
         if action:
-            return {'actionType': action.ActionType,
+            return {'title': action.Title(),
+                    'actionType': action.ActionType,
                     'actionDisplay': action.ActionDisplay,
                     'content': action.Content,
                     'hideWhen': action.Hidewhen,
                     'inActionBar': action.InActionBar
                     }
         else:
-             return {'actionType': 'OPENFORM',
+             return {'title': '',
+                     'actionType': 'OPENFORM',
                      'actionDisplay': 'LINK',
                      'content': '',
                      'hideWhen': '',
@@ -136,6 +138,7 @@ class PlominoForm(object):
         """ Add an action to the form. 
         """
         actionid = self.request.get("actionid", None)
+        title = self.request.get("actiontitle", actionid)
         actionType = self.request.get("actiontype", 'OPENFORM')
         actionDisplay = self.request.get("actiondisplay", 'LINK')
         content = self.request.get("actioncontent", '')
@@ -145,9 +148,9 @@ class PlominoForm(object):
         # self.context is the current form
         if actionid:
             if not hasattr(self.context, actionid):
-                self.context.invokeFactory('PlominoAction', Title=actionid, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
+                self.context.invokeFactory('PlominoAction', Title=title, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
                 action = getattr(self.context.aq_parent.aq_parent, actionid)
-                action.setTitle(actionid)
+                action.setTitle(title)
                 #action = getattr(self.context.aq_parent.aq_parent, actionid)
                 #action.at_post_edit_script()
         

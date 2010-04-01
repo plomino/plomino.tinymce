@@ -18,6 +18,7 @@ class PlominoAction(object):
         """Set field properties to their new values. 
         """
         
+        title = self.request.get("actiontitle", self.context.id)
         actionType = self.request.get("actiontype", 'OPENFORM')
         actionDisplay = self.request.get("actiondisplay", 'LINK')
         content = self.request.get("actioncontent", '')
@@ -25,6 +26,7 @@ class PlominoAction(object):
         inActionBar = self.request.get("actioninactionbar", None) == 'on'
         
         # self.context is the current field
+        self.context.setTitle(title)
         self.context.setActionType(actionType)
         self.context.setActionDisplay(actionDisplay)
         self.context.setContent(content)

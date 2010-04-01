@@ -49,6 +49,11 @@
 				<legend>Edit Action Properties</legend>
 				
 				<p>
+					<label for="actionTitle">Action title</label>
+					<input id="actionTitle" name="actiontitle" tal:attributes="value python:actionProperties['title']" />
+				</p>
+				
+				<p>
 					<label for="actionTypesList">Action type</label>
 					<select id="actionTypesList" name="actiontype">
 						<option tal:repeat="type adapted/getActionTypes"

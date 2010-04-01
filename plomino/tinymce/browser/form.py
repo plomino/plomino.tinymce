@@ -50,9 +50,9 @@ class PlominoForm(object):
         """
         field = self.getField()
         if field:
-            return {'fieldType': field.getFieldType(),
-                    'fieldMode': field.getFieldMode(),
-                    'formula': field.getFormula()
+            return {'fieldType': field.FieldType,
+                    'fieldMode': field.FieldMode,
+                    'formula': field.Formula
                     }
         else:
              return {'fieldType': 'TEXT',
@@ -118,11 +118,11 @@ class PlominoForm(object):
         """
         action = self.getAction()
         if action:
-            return {'actionType': action.getActionType(),
-                    'actionDisplay': action.getActionDisplay(),
-                    'content': action.getContent(),
-                    'hideWhen': action.getHidewhen(),
-                    'inActionBar': action.getInActionBar()
+            return {'actionType': action.ActionType,
+                    'actionDisplay': action.ActionDisplay,
+                    'content': action.Content,
+                    'hideWhen': action.Hidewhen,
+                    'inActionBar': action.InActionBar
                     }
         else:
              return {'actionType': 'OPENFORM',
@@ -193,7 +193,7 @@ class PlominoForm(object):
         """
         hidewhen = self.getHidewhen()
         if hidewhen:
-            return hidewhen.getFormula()
+            return hidewhen.Formula
         else:
              return ''
          

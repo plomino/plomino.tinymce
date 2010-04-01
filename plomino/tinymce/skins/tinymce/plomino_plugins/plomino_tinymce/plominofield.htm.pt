@@ -40,7 +40,7 @@
 			<legend>Advanced edition</legend>
 			<p>
 				<a tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Main parameters</a><br />
-				<a tal:attributes="href python:field.absolute_url() + '/' + field.getFieldType().lower() + 'settings'"
+				<a tal:attributes="href python:field.absolute_url() + '/' + field.FieldType.lower() + 'settings'"
 					target="_blank" id="fieldSettingsLink">Specific settings</a>
 			</p>
 		</fieldset>

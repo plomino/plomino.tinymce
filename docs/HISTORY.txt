@@ -25,3 +25,7 @@ Changelog
 0.4beta
 -------
 - Some minor usage improvements
+
+0.4.1beta
+-------
+- Actions labels are editable

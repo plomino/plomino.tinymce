@@ -1,8 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:tal="http://xml.zope.org/namespaces/tal" id="region-content" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" i18n:domain="tinymce">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+	id="region-content"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en"
+	i18n:domain="plomino.tinymce">
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
-	<title>Add/edit a Plomino Field</title>
+	<title i18n:translate="plominofield_title">Add/edit a Plomino Field</title>
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
@@ -20,11 +24,11 @@
 	<div class="dialog-wrapper">
 		<!-- Form which selects an existing field -->
 		<fieldset tal:condition="field">
-			<legend>Select a Plomino Field</legend>
+			<legend i18n:translate="plominofield_selection">Select a Plomino Field</legend>
 			
 			<form id="fieldSelection" method="get">
 				<p>
-					<label for="plominoFieldId">Field ID</label>
+					<label i18n:translate="plominofield_id" for="plominoFieldId">Field ID</label>
 					<select id="plominoFieldId" name="fieldid" onchange="this.form.submit();">
 						<option
 							tal:repeat="item python:form.getFields()"
@@ -37,11 +41,11 @@
 		</fieldset>
 		
 		<fieldset tal:condition="field">
-			<legend>Advanced edition</legend>
+			<legend i18n:translate="plominofield_advanced">Advanced edition</legend>
 			<p>
-				<a tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Main parameters</a><br />
+				<a i18n:translate="plominofield_mainsettings" tal:attributes="href python:field.absolute_url() + '/edit'" target="_blank">Main parameters</a><br />
 				<a tal:attributes="href python:field.absolute_url() + '/' + field.FieldType.lower() + 'settings'"
-					target="_blank" id="fieldSettingsLink">Specific settings</a>
+					target="_blank" id="fieldSettingsLink" i18n:translate="plominofield_specificsettings">Specific settings</a>
 			</p>
 		</fieldset>
 		
@@ -50,17 +54,17 @@
 				tal:attributes="action python:field and field.absolute_url() + '/tinyfield/setFieldProperties' or form.absolute_url() + '/tinyform/addField'">
 				
 			<fieldset tal:condition="python:not field">
-				<legend>Create a Plomino Field</legend>
+				<legend i18n:translate="plominofield_createfield">Create a Plomino Field</legend>
 				
-				<label for="plominoFieldId">Field ID</label>
+				<label for="plominoFieldId" i18n:translate="plominofield_id">Field ID</label>
 				<input type="text" name="fieldid" id="plominoFieldId" tal:attributes="value fieldid" />
 			</fieldset>
 			
 			<fieldset>
-				<legend>Edit Field Properties</legend>
+				<legend i18n:translate="plominofield_edit">Edit Field Properties</legend>
 				
 				<p>
-					<label for="fieldTypesList">Field type</label>
+					<label for="fieldTypesList" i18n:translate="plominofield_type">Field type</label>
 					<select id="fieldTypesList" name="fieldtype" onchange="updateFieldSettingsLink(this.options[this.selectedIndex].value);">
 						<option tal:repeat="type adapted/getFieldTypes"
 								tal:content="python:type[1]"
@@ -69,7 +73,7 @@
 				</p>
 				
 				<p>
-					<label for="fieldModesList">Field mode</label>
+					<label for="fieldModesList" i18n:translate="plominofield_mode">Field mode</label>
 					<select id="fieldModesList" name="fieldmode">
 						<option tal:repeat="mode adapted/getFieldModes"
 								tal:content="python:mode[1]"
@@ -78,11 +82,11 @@
 				</p>
 				
 				<p>
-					<label for="fieldFormula">Formula</label><br />
+					<label for="fieldFormula" i18n:translate="plominofield_formula">Formula</label><br />
 					<textarea id="fieldFormula" name="fieldformula" tal:content="python:fieldproperties['formula']"></textarea>
 				</p>
 			</fieldset>
-			<div class="mceActionPanel formControls">
+			<div i18n:domain="tinymce" class="mceActionPanel formControls">
 					<span class="actionButtons">
 						<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
 						<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />

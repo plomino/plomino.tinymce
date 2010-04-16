@@ -1,8 +1,9 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="PlominoForm"
-    xmlns:cmf="http://namespaces.zope.org/cmf">
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="plomino.tinymce">
 
   <include package="Products.GenericSetup" file="meta.zcml" />
 

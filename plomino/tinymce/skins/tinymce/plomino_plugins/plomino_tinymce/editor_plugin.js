@@ -1,6 +1,8 @@
 (function() {
-	// Load plugin specific language pack
-	tinymce.PluginManager.requireLangPack('plomino_tinymce');
+	// Load plugin specific language pack (add languages in the string to load it).
+	// The test is required when a language is not provided, to fall back to English.
+	if ("en,fr".indexOf(tinyMCE.settings.language) != -1)
+		tinymce.PluginManager.requireLangPack('plomino_tinymce');
 
 	tinymce.create('tinymce.plugins.PlominoPlugin', {
 		/**
@@ -16,22 +18,22 @@
 		
 			// Register buttons
 			ed.addButton('plominofield', {
-				title : 'Add/edit a Plomino Field',
+				title : ed.getLang('plomino_tinymce.field', "Add/edit a Plomino Field"),
 				onclick : function() { editFunction(ed, url, 'field'); },
 				image : url + '/img/PlominoField.png'
 			});
 			ed.addButton('plominoaction', {
-				title : 'Add/edit a Plomino Action',
+				title : ed.getLang('plomino_tinymce.action', "Add/edit a Plomino Action"),
 				onclick : function() { editFunction(ed, url, 'action'); },
 				image : url + '/img/PlominoAction.png'
 			});
 			ed.addButton('plominosubform', {
-				title : 'Add a Plomino Sub-form',
+				title : ed.getLang('plomino_tinymce.subform', "Add a Plomino Sub-form"),
 				onclick : function() { editFunction(ed, url, 'subform'); },
 				image : url + '/img/PlominoForm.png'
 			});
 			ed.addButton('plominohidewhen', {
-				title : 'Add a Plomino Hiden-when zone',
+				title : ed.getLang('plomino_tinymce.hidewhen', "Add a Plomino Hiden-when zone"),
 				onclick : function() { editFunction(ed, url, 'hidewhen'); },
 				image : url + '/img/PlominoHideWhen.png'
 			});
@@ -80,7 +82,7 @@
 			// If the form is being created, don't create the same command
 			if (location.pathname.indexOf("portal_factory/PlominoForm") != -1)
 			{
-				alert("Please save the form before using this button.");
+				alert(ed.getLang('plomino_tinymce.edition_forbidden', 'Please save the form before using this button.'));
 				return;
 			}
 			
@@ -180,7 +182,7 @@
 		 */
 		getInfo : function() {
 			return {
-				longname : 'Plomino Field Edition Plugin',
+				longname : 'Plomino Tinymde Integration Plugin',
 				author : 'Romaric BREIL',
 				authorurl : 'http://tinymce.moxiecode.com',
 				//infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/example',

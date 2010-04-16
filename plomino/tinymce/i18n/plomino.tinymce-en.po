@@ -64,6 +64,30 @@ msgstr "Hide-when formula"
 msgid "plominoaction_inactionbar"
 msgstr "Display action in action bar"
 
+#: plominosubform.htm.pt
+msgid "plominosubform_title"
+msgstr "Insert a Plomino Sub-form"
+msgid "plominosubform_subtitle"
+msgstr "Insert a Sub-form"
+msgid "plominosubform_selection"
+msgstr "Sub-form"
+
+#: plominohidewhen.htm.pt
+msgid "plominohidewhen_title"
+msgstr "Add/edit a Plomino Hide-when"
+msgid "plominohidewhen_selection"
+msgstr "Select a Plomino Hide-when"
+msgid "plominohidewhen_id"
+msgstr "Hide-when ID"
+msgid "plominohidewhen_createbutton"
+msgstr "Create a Hide-when"
+msgid "plominohidewhen_creation"
+msgstr "Create a Plomino Hide-when"
+msgid "plominohidewhen_editformula"
+msgstr "Edit Hide-when Formula"
+msgid "plominohidewhen_formula"
+msgstr "Hide-when Formula"
+
 #: plomino.tinymce_submit_err.htm.pt
 msgid "plominoerror_title"
 msgstr "Error message"

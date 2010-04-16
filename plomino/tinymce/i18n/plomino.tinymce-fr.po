@@ -65,6 +65,30 @@ msgstr "Formule « Cacher quand… »"
 msgid "plominoaction_inactionbar"
 msgstr "Afficher dans la barre d'action"
 
+#: plominosubform.htm.pt
+msgid "plominosubform_title"
+msgstr "Insérer un sous-formulaire Plomino"
+msgid "plominosubform_subtitle"
+msgstr "Insérer un sous-formulaire"
+msgid "plominosubform_selection"
+msgstr "Sous-formulaire"
+
+#: plominohidewhen.htm.pt
+msgid "plominohidewhen_title"
+msgstr "Ajouter/éditer un « Cacher quand… » Plomino"
+msgid "plominohidewhen_selection"
+msgstr "Sélection d'un « Cacher quand… » Plomino"
+msgid "plominohidewhen_id"
+msgstr "ID du « Cacher quand… »"
+msgid "plominohidewhen_createbutton"
+msgstr "Créer un « Cacher quand… »"
+msgid "plominohidewhen_creation"
+msgstr "Création d'un « Cacher quand… » Plomino"
+msgid "plominohidewhen_editformula"
+msgstr "Éditer la formule du « Cacher quand… »"
+msgid "plominohidewhen_formula"
+msgstr "Formule du « Cacher quand… »"
+
 #: plomino.tinymce_submit_err.htm.pt
 msgid "plominoerror_title"
 msgstr "Message d'erreur"

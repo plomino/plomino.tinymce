@@ -64,6 +64,30 @@ msgstr ""
 msgid "plominoaction_inactionbar"
 msgstr ""
 
+#: plominosubform.htm.pt
+msgid "plominosubform_title"
+msgstr ""
+msgid "plominosubform_subtitle"
+msgstr ""
+msgid "plominosubform_selection"
+msgstr ""
+
+#: plominohidewhen.htm.pt
+msgid "plominohidewhen_title"
+msgstr ""
+msgid "plominohidewhen_selection"
+msgstr ""
+msgid "plominohidewhen_id"
+msgstr ""
+msgid "plominohidewhen_createbutton"
+msgstr ""
+msgid "plominohidewhen_creation"
+msgstr ""
+msgid "plominohidewhen_editformula"
+msgstr ""
+msgid "plominohidewhen_formula"
+msgstr ""
+
 #: plomino.tinymce_submit_err.htm.pt
 msgid "plominoerror_title"
 msgstr ""

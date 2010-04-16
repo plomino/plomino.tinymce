@@ -1,8 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns:tal="http://xml.zope.org/namespaces/tal" id="region-content" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" i18n:domain="tinymce">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+	id="region-content"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en"
+	i18n:domain="plomino.tinymce">
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
-	<title>Add/edit a Plomino Field</title>
+	<title i18n:translate="plominoerror_title">Error message</title>
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
@@ -11,13 +15,13 @@
 	<div class="dialog-wrapper">
 		<form>
 			<fieldset>
-				<legend>Error in submitted data</legend>
-				<p tal:condition="python:error=='no_field'">The field name is incorrect.</p>
-				<p tal:condition="python:error=='no_action'">The action name is incorrect.</p>
-				<p tal:condition="python:error=='no_hidewhen'">The hide-when name is incorrect.</p>
-				<p tal:condition="python:error=='object_exists'">An object with the same name already exists.</p>
+				<legend i18n:translate="plominoerror_subtitle">Error in submitted data</legend>
+				<p tal:condition="python:error=='no_field'" i18n:translate="plominoerror_nofield">The field name is incorrect.</p>
+				<p tal:condition="python:error=='no_action'" i18n:translate="plominoerror_noaction">The action name is incorrect.</p>
+				<p tal:condition="python:error=='no_hidewhen'" i18n:translate="plominoerror_nohidewhen">The hide-when name is incorrect.</p>
+				<p tal:condition="python:error=='object_exists'" i18n:translate="plominoerror_objectexists">An object with the same name already exists.</p>
 			</fieldset>
-			<p>
+			<p i18n:domain="tinymce">
 				<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel"
 					onclick="tinyMCEPopup.close();" />
 			</p>

@@ -29,3 +29,8 @@ Changelog
 0.4.1beta
 ---------
 - Actions labels are editable
+
+0.5beta
+-------
+- All components are internationalised
+- A translation is available in english and french

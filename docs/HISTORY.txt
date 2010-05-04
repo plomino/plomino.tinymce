@@ -2,6 +2,11 @@ Changelog
 =========
 0.5beta
 -------
+- remove old import step declaration |kiorky]
+- make the skin directory name consistent [kiorky]
+
+0.5beta
+-------
 - All components are internationalised
 - A translation is available in english and french
 

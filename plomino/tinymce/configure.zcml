@@ -2,13 +2,13 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"      
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="plomino.tinymce">
-    
   <five:registerPackage package="." initialize=".initialize" />
-  <include file="profiles.zcml" />
   <include package=".browser"/>
-  
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True"/>
+  <include file="profiles.zcml" />
   <genericsetup:importStep
       name="plomino.tinymce-postInstall"
       title="manual coded post-install for plomino.tinymce"

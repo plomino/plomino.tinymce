@@ -1,5 +1,30 @@
 Changelog
 =========
+0.5beta
+-------
+- All components are internationalised
+- A translation is available in english and french
+
+0.4.1beta
+---------
+- Actions labels are editable
+
+0.4beta
+-------
+- Some minor usage improvements
+
+0.3alpha
+--------
+
+- Error messages are displayed when needed
+- Sub-forms can be added in the editor
+- Hide-when zones can be added and edited in TinyMCE
+
+0.2alpha
+--------
+
+- Actions can be created and edited from the TinyMCE editor
+- Buttons are usable only on already created forms
 
 0.1alpha
 --------
@@ -9,28 +34,3 @@ Changelog
 - Plomino field can be edited from the TinyMCE editor
 - It can also be created
 
-0.2alpha
---------
-
-- Actions can be created and edited from the TinyMCE editor
-- Buttons are usable only on already created forms
-
-0.3alpha
---------
-
-- Error messages are displayed when needed
-- Sub-forms can be added in the editor
-- Hide-when zones can be added and edited in TinyMCE
-
-0.4beta
--------
-- Some minor usage improvements
-
-0.4.1beta
----------
-- Actions labels are editable
-
-0.5beta
--------
-- All components are internationalised
-- A translation is available in english and french

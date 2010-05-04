@@ -4,6 +4,28 @@ Introduction
 Plomino TinyMCE Intrgration is a plugin for Plomino which allows to manage
 easily Plomino objects (fields, actions and hidewhen) from TinyMCE interface.
 
+Credits
+========
+Companies
+---------
+|makinacom|_
+
+  * `Planet Makina Corpus <http://www.makina-corpus.org>`_
+  * `Contact us <mailto:python@makina-corpus.org>`_
+
+.. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
+.. _makinacom:  http://www.makina-corpus.com
+
+Authors
+------------
+
+- Romaric Breil <romaric.breil@supinfo.com>
+- Makina Corpus <python@makina-corpus.com>
+
+Contributors
+-----------------
+
+- Mathieu Pasquet <kiorky@cryptelium.net>
 
 Plomino Fields, Actions, Sub-forms and Hide-when Management
 ===========================================================
@@ -22,3 +44,4 @@ A hide-when zone can be created directly from the editor. Select a part of the
 form, click on the button, create the hide-when or select an existing one, and
 apply. The selected zone will be surrounded with the correct start:hidewhen
 and end:hidewhen tags.
+

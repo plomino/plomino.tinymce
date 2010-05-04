@@ -17,9 +17,8 @@
       description="Extension profile for Plomino TinyMCE Integration."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  <cmf:registerDirectory
-	name="tinymce"/>
 
+  <cmf:registerDirectory name="plomino_tinymce"/>
   
   <!-- ##code-section profiles.zcml #fill in your manual code here -->
   <!-- ##/code-section profiles.zcml -->

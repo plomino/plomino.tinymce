@@ -8,5 +8,11 @@
   <include package=".browser"/>
   
   <five:registerPackage package="." initialize=".initialize" />
-
+  <genericsetup:importStep
+      name="plomino.tinymce-postInstall"
+      title="manual coded post-install for plomino.tinymce"
+      description="manual coded post-install for plomino.tinymce"
+      handler="plomino.tinymce.setuphandlers.postInstall">
+    <depends name="plone-final"/>
+  </genericsetup:importStep>
 </configure>

@@ -10,7 +10,7 @@
 <object name="portal_skins" meta_type="Plone Skins Tools">
  <object name="plomino_tinymce"
     meta_type="Filesystem Directory View"
-    directory="plomino.tinymce:skins/tinymce"/>
+    directory="plomino.tinymce:skins/plomino_tinymce"/>
 
  <skin-path name="*">
 
@@ -21,8 +21,7 @@
        Note: insert-before (and -after) accepts the value "*" which means
        "all".
        -->
-  <layer name="plomino_tinymce"
-     insert-after="custom"/>
+  <layer name="plomino_tinymce" insert-after="custom"/>
  </skin-path>
 </object>
 

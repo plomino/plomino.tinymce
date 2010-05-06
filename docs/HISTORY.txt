@@ -1,17 +1,21 @@
 Changelog
 =========
-0.5beta
--------
-- remove old import step declaration |kiorky]
+
+0.5.1beta
+---------
+
+- remove old import step declaration [kiorky]
 - make the skin directory name consistent [kiorky]
 
 0.5beta
 -------
+
 - All components are internationalised
 - A translation is available in english and french
 
 0.4.1beta
 ---------
+
 - Actions labels are editable
 
 0.4beta
@@ -38,4 +42,3 @@ Changelog
 - Packaged in an egg
 - Plomino field can be edited from the TinyMCE editor
 - It can also be created
-

@@ -14,7 +14,7 @@
 </head>
 <body tal:define="baseurl here/portal_url;
 				  parentpath here/REQUEST/parent|nothing;
-                  form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
+                  form python:here.restrictedTraverse(parentpath);
                   subformid here/REQUEST/subformid|nothing;
                   adapted form/tinyform|nothing;
                   ">

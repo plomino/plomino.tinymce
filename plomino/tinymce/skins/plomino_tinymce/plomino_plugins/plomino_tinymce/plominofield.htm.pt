@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/plomino.tinymce.css" />
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
-                  form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
+                  form python:here.restrictedTraverse(parentpath);
                   fieldid here/REQUEST/fieldid|nothing;
                   adapted form/tinyform|nothing;
                   fieldproperties adapted/getFieldProperties;

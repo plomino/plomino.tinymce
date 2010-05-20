@@ -14,8 +14,17 @@
 		 * @param {string} url Absolute URL to where the plugin is located.
 		 */
 		init : function(ed, url) {
-		var editFunction = this.editFormElement;
+			// Get the physical path of the current Zope object
+			tinymce.util.XHR.send({
+				url : './getPhysicalPath',
+				success : function(text) {
+					zopePhysicalPath = tinymce.util.JSON.parse('[' + text.substr(1, text.length - 2) + ']').join('/');
+				}
+			});
+
 		
+			var editFunction = this.editFormElement;
+			
 			// Register buttons
 			ed.addButton('plominofield', {
 				title : ed.getLang('plomino_tinymce.field', "Add/edit a Plomino Field"),
@@ -164,7 +173,7 @@
 			
 			ed.windowManager.open({
 				// GET the parent pathname (part of the URL) and the field selected in the editor
-				file : url + elementEditionPage + '?parent=' + location.pathname + '&' + elementIdName + '=' + elementId,
+				file : url + elementEditionPage + '?parent=' + zopePhysicalPath + '&' + elementIdName + '=' + elementId,
 				width : 600 + parseInt(ed.getLang('plomino_tinymce.delta_width', 0)),
 				height : 400 + parseInt(ed.getLang('plomino_tinymce.delta_height', 0)),
 				inline : 1

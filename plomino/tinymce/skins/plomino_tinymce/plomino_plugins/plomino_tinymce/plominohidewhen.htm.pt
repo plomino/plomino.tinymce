@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/plomino.tinymce.css" />
 </head>
 <body tal:define="parentpath here/REQUEST/parent|nothing;
-                  form python:here.restrictedTraverse('/'.join(parentpath.split('/')[0:-1]));
+                  form python:here.restrictedTraverse(parentpath);
                   hidewhenid here/REQUEST/hidewhenid|nothing;
                   adapted form/tinyform|nothing;
                   hidewhenFormula adapted/getHidewhenFormula;

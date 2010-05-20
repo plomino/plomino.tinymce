@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.2beta
+---------
+
+- Bug correction: popups can be used when the Zope server is accessed through a redirection
+
 0.5.1beta
 ---------
 

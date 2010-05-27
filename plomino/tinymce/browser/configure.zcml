@@ -4,28 +4,32 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="plomino.tinymce">
 
-   <browser:view
-        name="tinyfield"
-        for="Products.CMFPlomino.interfaces.IPlominoField"
-        class=".field.PlominoField"
-        permission="zope.Public"
-        />
-   <browser:view
+   <browser:page
         name="tinyform"
         for="Products.CMFPlomino.interfaces.IPlominoForm"
         class=".form.PlominoForm"
         permission="zope.Public"
+        allowed_attributes="getField addField addAction addHidewhen"
         />
-   <browser:view
+   <browser:page
+        name="tinyfield"
+        for="Products.CMFPlomino.interfaces.IPlominoField"
+        class=".field.PlominoField"
+        permission="zope.Public"
+        allowed_attributes="setFieldProperties"
+        />
+   <browser:page
         name="tinyaction"
         for="Products.CMFPlomino.interfaces.IPlominoAction"
         class=".action.PlominoAction"
         permission="zope.Public"
+        allowed_attributes="setActionProperties"
         />
-   <browser:view
+   <browser:page
         name="tinyhidewhen"
         for="Products.CMFPlomino.interfaces.IPlominoHidewhen"
         class=".hidewhen.PlominoHidewhen"
         permission="zope.Public"
+        allowed_attributes="setHidewhenProperties"
         />
 </configure>

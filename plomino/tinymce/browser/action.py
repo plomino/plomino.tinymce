@@ -33,6 +33,6 @@ class PlominoAction(object):
         self.context.setHidewhen(hideWhen)
         self.context.setInActionBar(inActionBar)
         
-        self.context.aq_parent.aq_parent.at_post_edit_script()
+        self.context.aq_inner.at_post_edit_script()
     
         self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=action&value=" + self.context.id)

@@ -24,6 +24,6 @@ class PlominoField(object):
         self.context.setFieldType(fieldtype)
         self.context.setFieldMode(fieldmode)
         self.context.setFormula(fieldformula)
-        self.context.aq_parent.aq_parent.at_post_edit_script()
+        self.context.aq_inner.at_post_edit_script()
         
         self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=field&value=" + self.context.id)

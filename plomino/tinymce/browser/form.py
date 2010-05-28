@@ -72,7 +72,7 @@ class PlominoForm(object):
         if fieldid:
             if not hasattr(self.context, fieldid):
                 self.context.invokeFactory('PlominoField', Title=fieldid, id=fieldid, FieldType=fieldtype, FieldMode=fieldmode)
-                field = self.context.aq_parent.aq_parent.getFormField(fieldid)
+                field = self.context.aq_inner.getFormField(fieldid)
                 field.setFormula(fieldformula)
                 field.setTitle(fieldid)
                 field.at_post_create_script()
@@ -149,7 +149,7 @@ class PlominoForm(object):
         if actionid:
             if not hasattr(self.context, actionid):
                 self.context.invokeFactory('PlominoAction', Title=title, id=actionid, ActionType=actionType, ActionDisplay=actionDisplay, Content=content, Hidewhen=hideWhen, InActionBar=inActionBar)
-                action = getattr(self.context.aq_parent.aq_parent, actionid)
+                action = getattr(self.context.aq_inner, actionid)
                 action.setTitle(title)
                 #action = getattr(self.context.aq_parent.aq_parent, actionid)
                 #action.at_post_edit_script()
@@ -165,7 +165,7 @@ class PlominoForm(object):
     def getSubForms(self):
         """Returns a list of forms from the parent database, without the current form
         """
-        form = self.context.aq_parent.aq_parent
+        form = self.context.aq_inner
         subforms = form.getParentDatabase().getForms()
         subforms.remove(form)
         return subforms
@@ -210,7 +210,7 @@ class PlominoForm(object):
         if hidewhenid:
             if not hasattr(self.context, hidewhenid):
                 self.context.invokeFactory('PlominoHidewhen', Title=hidewhenid, id=hidewhenid, Formula=hidewhenformula)
-                hidewhen = getattr(self.context.aq_parent.aq_parent, hidewhenid)
+                hidewhen = getattr(self.context.aq_inner, hidewhenid)
                 hidewhen.setTitle(hidewhenid)
 #                hidewhen.at_post_edit_script()
 

@@ -33,6 +33,7 @@
     <element value="plonelink"/>
     <element value="plomino_tinymce|/plomino_plugins/plomino_tinymce/editor_plugin.js"/>
     <element value="atomic|/plomino_plugins/atomic/editor_plugin.js"/>
+    <element value="plomino_accordion|/plomino_plugins/plomino_accordion/editor_plugin.js"/>
   </customplugins>
   <entity_encoding value="raw"/>
  </resourcetypes>
@@ -130,6 +131,7 @@
   <toolbar_plomino_tinymce value="plominoaction"/>
   <toolbar_plomino_tinymce value="plominosubform"/>
   <toolbar_plomino_tinymce value="plominohidewhen"/>
+  <toolbar_plomino_tinymce value="plominoaccordion"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

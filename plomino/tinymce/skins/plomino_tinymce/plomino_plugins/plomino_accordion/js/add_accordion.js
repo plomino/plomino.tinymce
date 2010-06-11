@@ -4,12 +4,11 @@ function insert_accordion() {
 	tinyMCEPopup.restoreSelection();
 	var selection = ed.selection.getContent();
 
-	var node = ed.selection.getNode();
-	
-	var nbAncestors = 3 + tinymce.DOM.getParents(node, "div.plomino-accordion-content").length;
-	
+	// Count the number of recursive accordions (must be in 3..6)
+	var nbAncestors = 3 + tinymce.DOM.getParents(ed.selection.getNode(), "div.plomino-accordion-content").length;
 	if (nbAncestors <= 6)
 	{
+		// Insert the accordion
 		var title = document.getElementById("title").value;
 		var zone = '<h' + nbAncestors + ' class="plomino-accordion-header"><a href="#">' + title + '</a></h' + nbAncestors + '>'
 					+ '<div class="plomino-accordion-content">' + selection + '</div>';

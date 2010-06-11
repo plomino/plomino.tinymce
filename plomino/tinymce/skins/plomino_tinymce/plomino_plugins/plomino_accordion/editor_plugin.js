@@ -14,27 +14,45 @@
 		init : function(ed, url) {
 			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
 			ed.addCommand('mcePlominoAccordion', function() {
-				ed.windowManager.open({
-					file : url + '/add_accordion.htm',
-					width : 320 + ed.getLang('plomino_accordion.delta_width', 0),
-					height : 160 + ed.getLang('plomino_accordion.delta_height', 0),
-					inline : 1
-				}, {
-					plugin_url : url // Plugin absolute URL
-				});
+				// Remove the section
+				if (ed.selection.isCollapsed()) {
+					var accordion = tinymce.DOM.getParent(ed.selection.getNode(), "div.plomino-accordion-content");
+					if (accordion != null) {
+						// Find the section header
+						var title = accordion.previousSibling;
+						// can be an empty text node
+						if (title.nodeType == 3)
+							title = title.previousSibling;
+						// Remove the header and unwrap the content
+						if (tinymce.DOM.hasClass(title, "plomino-accordion-header"))
+							tinymce.DOM.remove(title, false);
+						tinymce.DOM.remove(accordion, true);
+					}
+				}
+				// Add a section
+				else {
+					ed.windowManager.open({
+						file : url + '/add_accordion.htm',
+						width : 320 + ed.getLang('plomino_accordion.delta_width', 0),
+						height : 160 + ed.getLang('plomino_accordion.delta_height', 0),
+						inline : 1
+					}, {
+						plugin_url : url // Plugin absolute URL
+					});
+				}
 			});
 
 			// Register example button
 			ed.addButton('plominoaccordion', {
-				title : 'Add an accordion section',
+				title : 'Plomino accordion section',
 				cmd : 'mcePlominoAccordion',
 				image : url + '/img/add_accordion.png'
 			});
 
-			// Add a node change handler, selects the button in the UI when a image is selected
-			/*ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('example', n.nodeName == 'IMG');
-			});*/
+			// Add a node change handler, selects the button in the UI when an accordion is selected
+			ed.onNodeChange.add(function(ed, cm, n) {
+				cm.setActive('plominoaccordion', tinymce.DOM.getParent(n, "div.plomino-accordion-content") != null);
+			});
 		},
 
 		/**

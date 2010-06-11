@@ -102,3 +102,11 @@ msgid "plominoerror_nohidewhen"
 msgstr "Le nom du « Cacher quand… » est incorrect."
 msgid "plominoerror_objectexists"
 msgstr "Un objet portant le même nom existe déjà."
+
+#: add_accordion.htm.pt
+msgid "plominoaccordion_title"
+msgstr "Ajouter une section d'accordéon"
+msgid "plominoaccordion_form"
+msgstr "Insérer l'en-tête de la section"
+msgid "plominoaccordion_field"
+msgstr "Titre"

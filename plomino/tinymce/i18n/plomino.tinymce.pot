@@ -101,3 +101,11 @@ msgid "plominoerror_nohidewhen"
 msgstr""
 msgid "plominoerror_objectexists"
 msgstr""
+
+#: add_accordion.htm.pt
+msgid "plominoaccordion_title"
+msgstr ""
+msgid "plominoaccordion_form"
+msgstr ""
+msgid "plominoaccordion_field"
+msgstr ""

@@ -101,3 +101,11 @@ msgid "plominoerror_nohidewhen"
 msgstr "The hide-when name is incorrect."
 msgid "plominoerror_objectexists"
 msgstr "An object with the same name already exists."
+
+#: add_accordion.htm.pt
+msgid "plominoaccordion_title"
+msgstr "Add an Accordion Section"
+msgid "plominoaccordion_form"
+msgstr "Insert the section header"
+msgid "plominoaccordion_field"
+msgstr "Title"

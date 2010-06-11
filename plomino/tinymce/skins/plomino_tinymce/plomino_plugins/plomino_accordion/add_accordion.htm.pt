@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 	<script type="text/javascript" src="js/add_accordion.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 </head>
 
 <body>

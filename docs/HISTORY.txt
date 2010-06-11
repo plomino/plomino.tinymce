@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6beta
+-------
+
+- A new TinyMCE plugin allows to insert Accordions in a form 
+
 0.5.2beta
 ---------
 

@@ -45,3 +45,17 @@ form, click on the button, create the hide-when or select an existing one, and
 apply. The selected zone will be surrounded with the correct start:hidewhen
 and end:hidewhen tags.
 
+Accordions Management
+=====================
+
+JQuery UI integration allows to include accordions in Plomino forms. An
+accordion contains parts of a web page that can be collapsed or expanded when the
+user clicks on the title of this zone.
+
+This plugin allows to add up to four recursive ranges of accordions in a form,
+and to remove an accordion section. To add a range, simply highlight a part of
+the form, then click on the button "Plomino Accordion", enter the section
+title, and apply.
+
+To remove a part, place the cursor in a section (a red frame), without
+selecting text, and click on the same button.

@@ -30,7 +30,7 @@
 					<label for="hidewhenid" i18n:translate="plominohidewhen_id">Hide-when ID</label>
 					<select id="hidewhenid" name="hidewhenid" onchange="this.form.submit();">
 						<option
-							tal:repeat="item python:form.getHidewhenFormulas()"
+							tal:repeat="item adapted/getHidewhenFormulas"
 							tal:content="item/id"
 							tal:attributes="value item/id; selected python:item.id==hidewhenid"></option>
 					</select>

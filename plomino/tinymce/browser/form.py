@@ -17,7 +17,7 @@ class PlominoForm(object):
         """
         """
         return self
-     
+    
     def getFieldTypes(self):
         """Return a list of possible types for a field.
         """
@@ -84,6 +84,14 @@ class PlominoForm(object):
             
         else:
             self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_field")
+            
+    
+    def getActions(self):
+        """Returns a sorted list of actions
+        """
+        actions = self.context.aq_inner.getActions(None, False)
+        actions.sort(key=lambda elt: elt.id.lower())
+        return actions
             
 
     def getActionTypes(self):
@@ -168,8 +176,15 @@ class PlominoForm(object):
         form = self.context.aq_inner
         subforms = form.getParentDatabase().getForms()
         subforms.remove(form)
-        subforms.sort(key=lambda elt: elt.id)
+        subforms.sort(key=lambda elt: elt.id.lower())
         return subforms
+    
+    def getHidewhenFormulas(self):
+        """Returns a sorted list of Hide-when
+        """
+        hw = self.context.aq_inner.getHidewhenFormulas()
+        hw.sort(key=lambda elt: elt.id.lower())
+        return hw
     
     def getHidewhen(self):
         """Returns a hide-when formula from the request, or the first hide-when formula if empty, or None if the specified hide-when doesn't exist. 

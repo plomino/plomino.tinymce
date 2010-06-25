@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.1beta
+---------
+
+- Bug correction: in fields, action, subform and hide-when popups, items are sorted by ID
+
 0.6beta
 -------
 

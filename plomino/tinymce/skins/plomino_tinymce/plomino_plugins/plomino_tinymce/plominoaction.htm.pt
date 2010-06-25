@@ -30,7 +30,7 @@
 					<label for="actionid" i18n:translate="plominoaction_id">Action ID</label>
 					<select id="actionid" name="actionid" onchange="this.form.submit();">
 						<option
-							tal:repeat="item python:form.getActions(None, False)"
+							tal:repeat="item adapted/getActions"
 							tal:content="item/id"
 							tal:attributes="value item/id; selected python:item.id==actionid"></option>
 					</select>

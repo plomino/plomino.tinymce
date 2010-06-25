@@ -168,6 +168,7 @@ class PlominoForm(object):
         form = self.context.aq_inner
         subforms = form.getParentDatabase().getForms()
         subforms.remove(form)
+        subforms.sort(key=lambda elt: elt.id)
         return subforms
     
     def getHidewhen(self):

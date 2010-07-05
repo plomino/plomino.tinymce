@@ -47,6 +47,7 @@
 				image : url + '/img/PlominoHideWhen.png'
 			});
 			
+			var isNotFormEditor = document.getElementById('FormLayout') == null;
 			/*
 			 * If the editor is not in the form edition page, disable buttons and avoid their reactivation.
 			 * If the selected text is a plomino item, disable buttons for other classes.
@@ -59,10 +60,10 @@
 				var isHidewhen = ed.dom.hasClass(curNode, 'plominoHidewhenClass');
 				var isPlominoClass = isField || isAction || isSubform || isHidewhen;
 				
-				ed.controlManager.setDisabled('plominofield', ed.editorId !== 'FormLayout' || (isPlominoClass && !isField));
-				ed.controlManager.setDisabled('plominoaction', ed.editorId !== 'FormLayout' || (isPlominoClass && !isAction));
-				ed.controlManager.setDisabled('plominosubform', ed.editorId !== 'FormLayout' || (isPlominoClass && !isSubform));
-				ed.controlManager.setDisabled('plominohidewhen', ed.editorId !== 'FormLayout' || (isPlominoClass && !isHidewhen));
+				ed.controlManager.setDisabled('plominofield', isNotFormEditor || (isPlominoClass && !isField));
+				ed.controlManager.setDisabled('plominoaction', isNotFormEditor || (isPlominoClass && !isAction));
+				ed.controlManager.setDisabled('plominosubform', isNotFormEditor || (isPlominoClass && !isSubform));
+				ed.controlManager.setDisabled('plominohidewhen', isNotFormEditor || (isPlominoClass && !isHidewhen));
 			});
 		},
 

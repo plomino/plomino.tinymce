@@ -4,7 +4,8 @@ Changelog
 0.6.1beta
 ---------
 
-- Bug correction: in fields, action, subform and hide-when popups, items are sorted by ID
+- Bug fix: in fields, action, subform and hide-when popups, items are sorted by ID
+- Bug fix: editor buttons are enabled in the fullscreen editor
 
 0.6beta
 -------

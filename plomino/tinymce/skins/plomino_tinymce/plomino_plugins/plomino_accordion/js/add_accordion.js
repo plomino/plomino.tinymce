@@ -10,8 +10,8 @@ function insert_accordion() {
 	{
 		// Insert the accordion
 		var title = document.getElementById("title").value;
-		var zone = '<h' + nbAncestors + ' class="plomino-accordion-header"><a href="#">' + title + '</a></h' + nbAncestors + '>'
-					+ '<div class="plomino-accordion-content">' + selection + '</div>';
+		var zone = '<div><h' + nbAncestors + ' class="plomino-accordion-header"><a href="#">' + title + '</a></h' + nbAncestors + '>'
+					+ '<div class="plomino-accordion-content">' + selection + '</div></div>';
 		ed.execCommand('mceInsertContent', false, zone, {skip_undo : 1});
 	}
 	else

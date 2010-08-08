@@ -1,4 +1,5 @@
-from Products.CMFPlomino.config import FIELD_TYPES, FIELD_MODES
+from Products.CMFPlomino.config import FIELD_MODES
+from Products.CMFPlomino.PlominoField import get_field_types
 from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
 from Products.CMFPlomino.PlominoAction import PlominoAction
 from Products.CMFPlomino.PlominoField import PlominoField
@@ -21,7 +22,10 @@ class PlominoForm(object):
     def getFieldTypes(self):
         """Return a list of possible types for a field.
         """
-        return [(pair[0], pair[1][0]) for pair in FIELD_TYPES.items()]
+        fieldtypes = [(pair[0], pair[1][0]) for pair in get_field_types().items()]
+        fieldtypes.sort(key=lambda f:f[1])
+        return fieldtypes
+        
     
     def getFieldModes(self):
         """Return a list of possible modes for a field.

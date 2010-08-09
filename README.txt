@@ -1,7 +1,7 @@
 Introduction
 ============
 
-Plomino TinyMCE Intrgration is a plugin for Plomino which allows to manage
+Plomino TinyMCE Integration is a plugin for Plomino which allows to manage
 easily Plomino objects (fields, actions and hidewhen) from TinyMCE interface.
 
 Credits

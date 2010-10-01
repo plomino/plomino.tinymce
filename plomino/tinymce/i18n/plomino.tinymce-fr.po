@@ -88,6 +88,8 @@ msgid "plominohidewhen_editformula"
 msgstr "Éditer la formule du « Cacher quand… »"
 msgid "plominohidewhen_formula"
 msgstr "Formule du « Cacher quand… »"
+msgid "plominohidewhen_dynamic"
+msgstr "« Cacher quand… » dynamique"
 
 #: plomino.tinymce_submit_err.htm.pt
 msgid "plominoerror_title"

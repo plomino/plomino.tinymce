@@ -87,6 +87,8 @@ msgid "plominohidewhen_editformula"
 msgstr ""
 msgid "plominohidewhen_formula"
 msgstr ""
+msgid "plominohidewhen_dynamic"
+msgstr ""
 
 #: plomino.tinymce_submit_err.htm.pt
 msgid "plominoerror_title"

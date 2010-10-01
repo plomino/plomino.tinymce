@@ -211,25 +211,26 @@ class PlominoForm(object):
         else:
             return None
 
-    def getHidewhenFormula(self):
+    def getHidewhenProperties(self):
         """Returns properties of a hide-when formula, or, if no hide-when formula is given, properties filled with default values.
         """
         hidewhen = self.getHidewhen()
         if hidewhen:
-            return hidewhen.Formula
+            return { 'formula': hidewhen.Formula, 'isdynamichidewhen': hidewhen.isDynamicHidewhen }
         else:
-             return ''
+             return { 'formula': '', 'isdynamichidewhen': False }
          
     def addHidewhen(self):
         """ Add a hide-when to the form. 
         """
         hidewhenid = self.request.get("hidewhenid", None)
         hidewhenformula = self.request.get("hidewhenformula", '')
+        hidewhentype = self.request.get("hidewhentype", 'static')
         
         # self.context is the current form
         if hidewhenid:
             if not hasattr(self.context, hidewhenid):
-                self.context.invokeFactory('PlominoHidewhen', Title=hidewhenid, id=hidewhenid, Formula=hidewhenformula)
+                self.context.invokeFactory('PlominoHidewhen', Title=hidewhenid, id=hidewhenid, Formula=hidewhenformula, isDynamicHidewhen=hidewhentype=='dynamic')
                 hidewhen = getattr(self.context.aq_inner, hidewhenid)
                 hidewhen.setTitle(hidewhenid)
 #                hidewhen.at_post_edit_script()

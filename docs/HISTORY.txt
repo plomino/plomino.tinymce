@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.5
+---------
+
+- Hide-when formulas can be computed dynamically by Plomino (by AJAX). Since Plomino 1.7.3, this parameter is set on each hide-when, and can now be set in the TinyMCE hidewhen popup.
+
 0.6.1beta
 ---------
 

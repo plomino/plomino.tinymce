@@ -16,9 +16,11 @@ class PlominoHidewhen(object):
         """Set hide-when properties to their new values. 
         """
         hidewhenformula = self.request.get("hidewhenformula", '')
+        hidewhentype = self.request.get("hidewhentype", 'static')
         
         # self.context is the current hide-when
         self.context.setFormula(hidewhenformula)
+        self.context.isDynamicHidewhen = hidewhentype == 'dynamic'
         self.context.aq_inner.at_post_edit_script()
         
         self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + self.context.id)

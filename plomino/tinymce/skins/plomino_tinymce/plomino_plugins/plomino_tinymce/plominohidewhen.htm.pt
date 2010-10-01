@@ -16,7 +16,7 @@
                   form python:here.restrictedTraverse(parentpath);
                   hidewhenid here/REQUEST/hidewhenid|nothing;
                   adapted form/tinyform|nothing;
-                  hidewhenFormula adapted/getHidewhenFormula;
+                  hidewhenproperties adapted/getHidewhenProperties;
                   hidewhen adapted/getHidewhen;
 				  ">
     
@@ -59,7 +59,13 @@
 				
 				<p>
 					<label for="hidewhenFormula" i18n:translate="plominohidewhen_formula">Hide-when Formula</label>
-					<textarea id="hidewhenFormula" name="hidewhenformula" tal:content="hidewhenFormula"></textarea>
+					<textarea id="hidewhenFormula" name="hidewhenformula" tal:content="python:hidewhenproperties['formula']"></textarea>
+				</p>
+				
+				<p>
+					<input type="checkbox" id="hidewhentype_dynamic" name="hidewhentype" value="dynamic"
+						tal:attributes="checked python:hidewhenproperties['isdynamichidewhen']" />
+					<label for="hidewhentype_dynamic" i18n:translate="plominohidewhen_dynamic">Dynamic hide-when</label>
 				</p>
 			</fieldset>
 			

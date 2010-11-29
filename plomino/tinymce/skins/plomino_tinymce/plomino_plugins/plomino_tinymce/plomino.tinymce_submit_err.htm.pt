@@ -22,7 +22,7 @@
 				<p tal:condition="python:error=='object_exists'" i18n:translate="plominoerror_objectexists">An object with the same name already exists.</p>
 			</fieldset>
 			<p i18n:domain="tinymce">
-				<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel"
+				<input type="button" id="cancel" class="standalone" name="cancel" value="Cancel" i18n:attributes="value;"
 					onclick="tinyMCEPopup.close();" />
 			</p>
 		</form>

@@ -88,8 +88,8 @@
 			</fieldset>
 			<div i18n:domain="tinymce" class="mceActionPanel formControls">
 					<span class="actionButtons">
-						<input type="submit" id="insert" class="context" name="insert" i18n:attributes="value common_insert" />
-						<input type="button" id="cancel" class="standalone" name="cancel" i18n:attributes="value common_cancel" onclick="tinyMCEPopup.close();" />
+						<input type="submit" id="insert" class="context" name="insert" value="Insert" i18n:attributes="value;" />
+						<input type="button" id="cancel" class="standalone" name="cancel" value="Cancel" i18n:attributes="value;" onclick="tinyMCEPopup.close();" />
 					</span>
 			</div>
 		</form>

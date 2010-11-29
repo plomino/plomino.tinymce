@@ -17,6 +17,14 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1 iso-8859-1\n"
 "Domain: plomino.tinymce\n"
 
+#: common
+msgid "Insert"
+msgstr "Insérer"
+msgid "Cancel"
+msgstr "Annuler"
+msgid "Close"
+msgstr "Fermer"
+
 #: plominofield.htm.pt
 msgid "plominofield_title"
 msgstr "Ajouter/éditer un champ Plomino"

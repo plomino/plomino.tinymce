@@ -26,7 +26,7 @@
 			</fieldset>
 			
 			<p i18n:domain="tinymce">
-				<input type="button" id="close" class="context" name="close" i18n:attributes="value common_close" onclick="tinyMCEPopup.close();" />
+				<input type="button" id="close" class="context" name="close" value="Close" i18n:attributes="value;" onclick="tinyMCEPopup.close();" />
 			</p>
 		</form>
 		<script type="text/javascript" tal:condition="python:not fieldurl">tinyMCEPopup.close();</script>

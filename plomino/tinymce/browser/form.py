@@ -43,7 +43,7 @@ class PlominoForm(object):
             else:
                 return None
         
-        fieldsList = self.context.getFields()
+        fieldsList = self.context.getFormFields()
         if len(fieldsList) > 0:
             return fieldsList[0]
         else:

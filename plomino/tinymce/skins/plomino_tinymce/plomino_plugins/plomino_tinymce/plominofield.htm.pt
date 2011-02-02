@@ -31,7 +31,7 @@
 					<label i18n:translate="plominofield_id" for="plominoFieldId">Field ID</label>
 					<select id="plominoFieldId" name="fieldid" onchange="this.form.submit();">
 						<option
-							tal:repeat="item python:form.getFields()"
+							tal:repeat="item python:form.getFormFields()"
 							tal:content="item/id"
 							tal:attributes="value item/id; selected python:item.id==fieldid"></option>
 					</select>

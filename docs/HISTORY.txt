@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.6.6
+-----
+- compliancy with Plomino API (replace getFields with getFormFields)
+
 0.6.5
 ---------
 

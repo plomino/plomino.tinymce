@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
 <object>
  <resourcetypes>
-  <customplugins>
-    <element value="ploneimage"/>
-    <element value="plonelink"/>
+  <customplugins purge="False">
     <element value="plomino_tinymce|/plomino_plugins/plomino_tinymce/editor_plugin.js"/>
     <element value="atomic|/plomino_plugins/atomic/editor_plugin.js"/>
     <element value="plomino_accordion|/plomino_plugins/plomino_accordion/editor_plugin.js"/>
   </customplugins>
  </resourcetypes>
+
  <toolbar>
-  <customtoolbarbuttons>
+  <customtoolbarbuttons purge="False">
   <toolbar_plomino_tinymce value="plominofield"/>
   <toolbar_plomino_tinymce value="plominoaction"/>
   <toolbar_plomino_tinymce value="plominosubform"/>

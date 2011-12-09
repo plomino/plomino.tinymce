@@ -3,7 +3,7 @@ var PlominoDialog = {
 	// Called when the "submit" button is clicked
 	submit : function(type, value) {
 		var ed = tinyMCEPopup.editor;
-		
+
 		if (type == 'action')
 			var plominoClass = 'plominoActionClass';
 		else if (type == 'field')
@@ -72,6 +72,54 @@ var PlominoDialog = {
 					}
 				}
 			}
+			else if (type == "cache")
+			{
+				// Insert or replace the selection
+				tinyMCEPopup.restoreSelection();
+				
+				// Select the parent node of the selection
+				var selection = ed.selection.getNode();
+				// If the node is a <span class="plominoFieldClass"/>, select all its content
+				if (tinymce.DOM.hasClass(selection, 'plominoCacheClass')) 
+				{
+					// get the old hide-when id
+					var oldId = selection.firstChild.nodeValue;
+					var splittedId = oldId.split(':');
+					if (splittedId.length > 1)
+						oldId = splittedId[1];
+
+					// get a list of hide-when opening and closing spans
+					var caches = tinyMCE.activeEditor.dom.select('span.plominoCacheClass');
+					// find the selected span
+					var i;
+					for (i = 0; i < caches.length; i++) {
+						if (caches[i] == selection)
+							break;
+					}
+					
+					// change the corresponding end
+					if (splittedId[0] == 'start') {
+						selection.firstChild.nodeValue = 'start:' + value;
+						
+						for (; i < caches.length; i++) {
+							if (caches[i].firstChild && caches[i].firstChild.nodeValue == 'end:' + oldId) {
+								caches[i].firstChild.nodeValue = 'end:' + value;
+								break;
+							}
+						}
+					}
+					// change the corresponding start
+					else {
+						selection.firstChild.nodeValue = 'end:' + value;
+						
+						for (; i >= 0; i--) {
+							if (caches[i].firstChild && caches[i].firstChild.nodeValue == 'start:' + oldId) {
+								caches[i].firstChild.nodeValue = 'start:' + value;
+								break;
+							}
+						}
+					}
+				}
 			
 			else {
 				// String to add in the editor

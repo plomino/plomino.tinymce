@@ -9,7 +9,7 @@
         for="Products.CMFPlomino.interfaces.IPlominoForm"
         class=".form.PlominoForm"
         permission="zope.Public"
-        allowed_attributes="getField addField addAction addHidewhen"
+        allowed_attributes="getField addField addAction addHidewhen addCache"
         />
    <browser:page
         name="tinyfield"
@@ -31,5 +31,12 @@
         class=".hidewhen.PlominoHidewhen"
         permission="zope.Public"
         allowed_attributes="setHidewhenProperties"
+        />
+   <browser:page
+        name="tinycache"
+        for="Products.CMFPlomino.interfaces.IPlominoCache"
+        class=".cache.PlominoCache"
+        permission="zope.Public"
+        allowed_attributes="setCacheProperties"
         />
 </configure>

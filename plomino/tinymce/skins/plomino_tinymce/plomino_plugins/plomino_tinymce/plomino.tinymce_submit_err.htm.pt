@@ -19,6 +19,7 @@
 				<p tal:condition="python:error=='no_field'" i18n:translate="plominoerror_nofield">The field name is incorrect.</p>
 				<p tal:condition="python:error=='no_action'" i18n:translate="plominoerror_noaction">The action name is incorrect.</p>
 				<p tal:condition="python:error=='no_hidewhen'" i18n:translate="plominoerror_nohidewhen">The hide-when name is incorrect.</p>
+				<p tal:condition="python:error=='no_cache'" i18n:translate="plominoerror_nocache">The cache name is incorrect.</p>
 				<p tal:condition="python:error=='object_exists'" i18n:translate="plominoerror_objectexists">An object with the same name already exists.</p>
 			</fieldset>
 			<p i18n:domain="tinymce">

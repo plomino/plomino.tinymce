@@ -15,6 +15,7 @@
   <toolbar_plomino_tinymce value="plominosubform"/>
   <toolbar_plomino_tinymce value="plominohidewhen"/>
   <toolbar_plomino_tinymce value="plominoaccordion"/>
+  <toolbar_plomino_tinymce value="plominocache"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

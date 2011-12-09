@@ -46,6 +46,11 @@
 				onclick : function() { editFunction(ed, url, 'hidewhen'); },
 				image : url + '/img/PlominoHideWhen.png'
 			});
+			ed.addButton('plominocache', {
+				title : ed.getLang('plomino_tinymce.cache', "Add a Plomino cache fragment"),
+				onclick : function() { editFunction(ed, url, 'cache'); },
+				image : url + '/img/PlominoCache.png'
+			});
 			
 			var isNotFormEditor = document.getElementById('FormLayout') == null;
 			/*
@@ -58,12 +63,14 @@
 				var isAction = ed.dom.hasClass(curNode, 'plominoActionClass');
 				var isSubform = ed.dom.hasClass(curNode, 'plominoSubformClass');
 				var isHidewhen = ed.dom.hasClass(curNode, 'plominoHidewhenClass');
-				var isPlominoClass = isField || isAction || isSubform || isHidewhen;
+				var isCache = ed.dom.hasClass(curNode, 'plominoCacheClass');
+				var isPlominoClass = isField || isAction || isSubform || isHidewhen || isCache;
 				
 				ed.controlManager.setDisabled('plominofield', isNotFormEditor || (isPlominoClass && !isField));
 				ed.controlManager.setDisabled('plominoaction', isNotFormEditor || (isPlominoClass && !isAction));
 				ed.controlManager.setDisabled('plominosubform', isNotFormEditor || (isPlominoClass && !isSubform));
 				ed.controlManager.setDisabled('plominohidewhen', isNotFormEditor || (isPlominoClass && !isHidewhen));
+				ed.controlManager.setDisabled('plominocache', isNotFormEditor || (isPlominoClass && !isCache));
 			});
 		},
 
@@ -116,6 +123,11 @@
 				var elementEditionPage = '/plominohidewhen.htm';
 				var elementIdName = 'hidewhenid';
 			}
+			else if (elementType === "cache") {
+				var elementClass = 'plominoCacheClass';
+				var elementEditionPage = '/plominocache.htm';
+				var elementIdName = 'cacheid';
+			}
 			else
 				return;
 			
@@ -128,15 +140,15 @@
 				ed.selection.select(selection);
 				var elementId = selection.firstChild.nodeValue;
 				
-				// hide-when zones start with start:hidewhenid and finish with end:hidewhenid
-				if (elementType === "hidewhen")
+				// hide-when and cache zones start with start:id and finish with end:id
+				if (elementType === "hidewhen" || elementType === "cache")
 				{
 					var splittedId = elementId.split(':');
 					if (splittedId.length > 1)
 						elementId = splittedId[1];
 				}
 			}
-			else if (elementType !== "hidewhen")
+			else if (elementType !== "hidewhen" && elementType !== "cache")
 			{
 				// If the selection contains a <span class="plominoFieldClass"/>, select all its content
 				nodes = tinymce.DOM.select('span.' + elementClass, selection);
@@ -192,7 +204,7 @@
 		 */
 		getInfo : function() {
 			return {
-				longname : 'Plomino Tinymde Integration Plugin',
+				longname : 'Plomino Tinymce Integration Plugin',
 				author : 'Romaric BREIL',
 				authorurl : 'http://tinymce.moxiecode.com',
 				//infourl : 'http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/example',

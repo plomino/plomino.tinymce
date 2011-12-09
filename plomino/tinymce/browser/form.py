@@ -4,6 +4,7 @@ from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
 from Products.CMFPlomino.PlominoAction import PlominoAction
 from Products.CMFPlomino.PlominoField import PlominoField
 from Products.CMFPlomino.PlominoHidewhen import PlominoHidewhen
+from Products.CMFPlomino.PlominoCache import PlominoCache
 
 class PlominoForm(object):
     """
@@ -242,4 +243,63 @@ class PlominoForm(object):
             
         else:
             self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_hidewhen")
+
+
+    #PLOMINO CACHE
+    def getCacheFormulas(self):
+        """Returns a sorted list of caches
+        """
+        hw = self.context.aq_inner.getCacheFormulas()
+        hw.sort(key=lambda elt: elt.id.lower())
+        return hw
+    
+    def getCacheFormula(self):
+        """Returns a cache formula from the request, or the first cache formula if empty, or None if the specified cache doesn't exist. 
+        """
+        cacheid = self.request.get("cacheid", None)
         
+        if self.request.get("create", False):
+            return None
+        
+        if cacheid:
+            cache = getattr(self.context, cacheid, None)
+            if isinstance(cache, PlominoCache):
+                return cache
+            else:
+                return None
+        
+        cacheList = self.context.getCacheFormulas()
+        if len(cacheList) > 0:
+            return cacheList[0]
+        else:
+            return None
+
+    def getCacheProperties(self):
+        """Returns properties of a cache formula, or, if no cache formula is given, properties filled with default values.
+        """
+        cache = self.getCacheFormula()
+        if cache:
+            return { 'formula': cache.Formula}
+        else:
+             return { 'formula': ''}
+         
+    def addCache(self):
+        """ Add a cache to the form. 
+        """
+        cacheid = self.request.get("cacheid", None)
+        cacheformula = self.request.get("cacheformula", '')
+        
+        # self.context is the current form
+        if cacheid:
+            if not hasattr(self.context, cacheid):
+                self.context.invokeFactory('PlominoCache', Title=cacheid, id=cacheid, Formula=cacheformula)
+                cache = getattr(self.context.aq_inner, cacheid)
+                cache.setTitle(cacheid)
+
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=cache&value=" + cacheid)
+            
+            else:
+                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")
+            
+        else:
+            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_cache")

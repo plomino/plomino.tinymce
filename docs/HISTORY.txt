@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.6.8 (2012-03-26)
+------------------
+
+- change dependency (Plomino has been renamed Products.CMFPlomino)
+- add Cache button to insert PlominoCache sections
+
 0.6.7 (2011-05-27)
 ------------------
 

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.6.8'
+version = '0.6.9'
 
 setup(name='plomino.tinymce',
       version=version,

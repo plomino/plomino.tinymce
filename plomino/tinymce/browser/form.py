@@ -95,6 +95,7 @@ class PlominoForm(object):
         """Returns a sorted list of actions
         """
         actions = self.context.aq_inner.getActions(None, False)
+        actions = [a[0] for a in actions]
         actions.sort(key=lambda elt: elt.id.lower())
         return actions
             
@@ -122,7 +123,7 @@ class PlominoForm(object):
         
         actionsList = self.context.getActions(None, False)
         if len(actionsList) > 0:
-            return actionsList[0]
+            return actionsList[0][0]
         else:
             return None
 

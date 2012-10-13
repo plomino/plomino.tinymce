@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+	id="region-content"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en"
+	i18n:domain="plomino.tinymce">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+	<title i18n:translate="plominohidewhen_title">Add/edit a Plomino Hide-when</title>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/plomino.tinymce.css" />
+</head>
+<body tal:define="parentpath here/REQUEST/parent|nothing;
+                  form python:here.restrictedTraverse(parentpath);
+                  hidewhenid here/REQUEST/hidewhenid|nothing;
+                  adapted form/tinyform|nothing;
+                  hidewhenproperties adapted/getHidewhenProperties;
+                  hidewhen adapted/getHidewhen;
+				  ">
+    
+	<div class="dialog-wrapper">
+		<!-- Form which selects an existing action -->
+			
+		<fieldset tal:condition="hidewhen">
+			<legend i18n:translate="plominohidewhen_selection">Select a Plomino Hide-when</legend>
+			<form id="hidewhenSelection" method="get">
+				<p>
+					<label for="hidewhenid" i18n:translate="plominohidewhen_id">Hide-when ID</label>
+					<select id="hidewhenid" name="hidewhenid" onchange="this.form.submit();">
+						<option
+							tal:repeat="item adapted/getHidewhenFormulas"
+							tal:content="item/id"
+							tal:attributes="value item/id; selected python:item.id==hidewhenid"></option>
+					</select>
+				</p>
+				<p>
+					<button class="context" i18n:translate="plominohidewhen_createbutton"
+						onclick="document.getElementById('create').setAttribute('value', 'true'); this.form.submit();">Create a Hide-when</button>
+					<input id="create" name="create" type="hidden" />
+					<input name="parent" type="hidden" tal:attributes="value parentpath" />
+				</p>
+			</form>
+		</fieldset>
+		
+		<!-- Form which edits the selected hide-when -->
+		<form method="post"
+			tal:attributes="action python:hidewhen and hidewhen.absolute_url() + '/tinyhidewhen/setHidewhenProperties' or form.absolute_url() + '/tinyform/addHidewhen'">
+			<fieldset tal:condition="python:not hidewhen">
+				<legend i18n:translate="plominohidewhen_creation">Create a Plomino Hide-when</legend>
+				
+				<label for="hidewhenid" i18n:translate="plominohidewhen_id">Hide-when ID</label>
+				<input type="text" name="hidewhenid" id="hidewhenid" />
+			</fieldset>
+			
+			<fieldset>
+				<legend i18n:translate="plominohidewhen_editformula">Edit Hide-when Formula</legend>
+				
+				<p>
+					<label for="hidewhenFormula" i18n:translate="plominohidewhen_formula">Hide-when Formula</label>
+					<textarea id="hidewhenFormula" name="hidewhenformula" tal:content="python:hidewhenproperties['formula']"></textarea>
+				</p>
+				
+				<p>
+					<input type="checkbox" id="hidewhentype_dynamic" name="hidewhentype" value="dynamic"
+						tal:attributes="checked python:hidewhenproperties['isdynamichidewhen']" />
+					<label for="hidewhentype_dynamic" i18n:translate="plominohidewhen_dynamic">Dynamic hide-when</label>
+				</p>
+			</fieldset>
+			
+			<div i18n:domain="tinymce" class="mceActionPanel formControls">
+				<span class="actionButtons">
+					<input type="submit" id="insert" class="context" name="insert" value="Insert" i18n:attributes="value;" />
+					<input type="button" id="cancel" class="standalone" name="cancel" value="Cancel" i18n:attributes="value;" onclick="tinyMCEPopup.close();" />
+				</span>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>

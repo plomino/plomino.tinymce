@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+	id="region-content"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en"
+	i18n:domain="plomino.tinymce">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+	<title i18n:translate="plominosubform_title">Insert a Plomino Sub-form</title>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/plomino.tinymce.css" />
+</head>
+<body tal:define="baseurl here/portal_url;
+				  parentpath here/REQUEST/parent|nothing;
+                  form python:here.restrictedTraverse(parentpath);
+                  subformid here/REQUEST/subformid|nothing;
+                  adapted form/tinyform|nothing;
+                  ">
+                  
+	<div class="dialog-wrapper">
+		<!-- Form which edits the selected field -->
+		<form method="post" tal:attributes="action python: baseurl + '/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm'">
+			<fieldset>
+				<legend i18n:translate="plominosubform_subtitle">Insert a Sub-form</legend>
+				
+				<p>
+					<input type="hidden" name="type" value="subform" />
+				
+					<label for="subformsList" i18n:translate="plominosubform_selection">Sub-form</label>
+					<select id="subformsList" name="value">
+						<option tal:repeat="subform adapted/getSubForms"
+								tal:content="subform/id"
+								tal:attributes="value subform/id; selected python:subform.id == subformid"></option>
+					</select>
+				</p>
+			</fieldset>
+			<div i18n:domain="tinymce" class="mceActionPanel formControls">
+					<span class="actionButtons">
+						<input type="submit" id="insert" class="context" name="insert" value="Insert" i18n:attributes="value;" />
+						<input type="button" id="cancel" class="standalone" name="cancel" value="Cancel" i18n:attributes="value;" onclick="tinyMCEPopup.close();" />
+					</span>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.7.0 (unreleased)
+------------------
+
+- moved tinymce plugins from the skin to a resource directory [alert]
+
 0.6.9 (2012-06-20)
 ------------------
 

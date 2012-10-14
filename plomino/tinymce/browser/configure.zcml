@@ -39,4 +39,8 @@
         permission="zope.Public"
         allowed_attributes="setCacheProperties"
         />
+   <browser:resourceDirectory
+        name="plomino.tinymce"
+        directory="tinymce_plugins"
+        />
 </configure>

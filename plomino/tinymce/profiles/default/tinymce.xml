@@ -2,9 +2,9 @@
 <object>
  <resourcetypes>
   <customplugins purge="False">
-    <element value="plomino_tinymce|/plomino_plugins/plomino_tinymce/editor_plugin.js"/>
-    <element value="atomic|/plomino_plugins/atomic/editor_plugin.js"/>
-    <element value="plomino_accordion|/plomino_plugins/plomino_accordion/editor_plugin.js"/>
+    <element value="plomino_tinymce|/++resource++plomino.tinymce/plomino_tinymce/editor_plugin.js"/>
+    <element value="atomic|/++resource++plomino.tinymce/atomic/editor_plugin.js"/>
+    <element value="plomino_accordion|/++resource++plomino.tinymce/plomino_accordion/editor_plugin.js"/>
   </customplugins>
  </resourcetypes>
 

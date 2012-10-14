@@ -3,7 +3,7 @@
 	<version>2</version>
 	<description>Plomino.TinyMCE default installation profile</description>
 	<dependencies>
-		<dependency>profile-Products.TinyMCE:TinyMCE</dependency>
+		<!-- dependency>profile-Products.TinyMCE:TinyMCE</dependency /-->
 		<dependency>profile-Products.CMFPlomino:default</dependency>
 	</dependencies>
 </metadata>

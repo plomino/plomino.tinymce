@@ -10,11 +10,10 @@
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/plomino.tinymce.css" />
+	<link rel="stylesheet" type="text/css" href="++resource++plomino.tinymce/plomino_tinymce/css/plomino.tinymce.css" />
 </head>
-<body tal:define="parentpath here/REQUEST/parent|nothing;
-                  form python:here.restrictedTraverse(parentpath);
-                  cacheid here/REQUEST/cacheid|nothing;
+<body tal:define="form python:view.context;
+                  cacheid view/request/cacheid|nothing;
                   adapted form/tinyform|nothing;
                   cacheproperties adapted/getCacheProperties;
                   cache adapted/getCacheFormula;
@@ -39,7 +38,6 @@
 					<button class="context" i18n:translate="plominocache_createbutton"
 						onclick="document.getElementById('create').setAttribute('value', 'true'); this.form.submit();">Create a Cache fragment</button>
 					<input id="create" name="create" type="hidden" />
-					<input name="parent" type="hidden" tal:attributes="value parentpath" />
 				</p>
 			</form>
 		</fieldset>

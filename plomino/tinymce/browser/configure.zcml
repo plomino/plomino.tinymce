@@ -4,12 +4,20 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="plomino.tinymce">
 
+    <browser:page
+          for="Products.CMFPlomino.interfaces.IPlominoForm"
+          name="tinymceplominoform"
+          class=".view.TinyMCEPlominoFormView"
+          allowed_interface=".view.ITinyMCEPlominoFormView"
+          allowed_attributes="action_form cache_form field_form hidewhen_form subform_form error_page valid_page"
+          permission="zope2.View"
+        />
    <browser:page
         name="tinyform"
         for="Products.CMFPlomino.interfaces.IPlominoForm"
         class=".form.PlominoForm"
         permission="zope.Public"
-        allowed_attributes="getField addField addAction addHidewhen addCache"
+        allowed_attributes="getField addField addAction addHidewhen addCache action_template"
         />
    <browser:page
         name="tinyfield"

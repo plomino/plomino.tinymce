@@ -1,3 +1,5 @@
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from Products.CMFPlomino.config import FIELD_MODES
 from Products.CMFPlomino.PlominoField import get_field_types
 from Products.CMFPlomino.PlominoAction import ACTION_TYPES, ACTION_DISPLAY
@@ -9,6 +11,7 @@ from Products.CMFPlomino.PlominoCache import PlominoCache
 class PlominoForm(object):
     """
     """
+    action_template = ViewPageTemplateFile('action.pt')
     
     def __init__(self, context, request):
         """Initialize adapter."""
@@ -82,13 +85,13 @@ class PlominoForm(object):
                 field.setTitle(fieldid)
                 field.at_post_create_script()
                 
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=field&value=" + fieldid + "&fieldurl=" + "/".join(field.getPhysicalPath()))
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/valid_page?type=field&value=" + fieldid + "&fieldurl=" + "/".join(field.getPhysicalPath()))
             
             else:
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=object_exists")
             
         else:
-            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_field")
+            self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=no_field")
             
     
     def getActions(self):
@@ -168,13 +171,13 @@ class PlominoForm(object):
                 #action = getattr(self.context.aq_parent.aq_parent, actionid)
                 #action.at_post_edit_script()
         
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=action&value=" + actionid)
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/valid_page?type=action&value=" + actionid)
             
             else:
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=object_exists")
             
         else:
-            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_action")
+            self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=no_action")
         
     def getSubForms(self):
         """Returns a list of forms from the parent database, without the current form
@@ -237,13 +240,13 @@ class PlominoForm(object):
                 hidewhen.setTitle(hidewhenid)
 #                hidewhen.at_post_edit_script()
 
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=hidewhen&value=" + hidewhenid)
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/valid_page?type=hidewhen&value=" + hidewhenid)
             
             else:
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=object_exists")
             
         else:
-            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_hidewhen")
+            self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=no_hidewhen")
 
 
     #PLOMINO CACHE
@@ -297,10 +300,10 @@ class PlominoForm(object):
                 cache = getattr(self.context.aq_inner, cacheid)
                 cache.setTitle(cacheid)
 
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=cache&value=" + cacheid)
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/valid_page?type=cache&value=" + cacheid)
             
             else:
-                self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=object_exists")
+                self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=object_exists")
             
         else:
-            self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_err.htm?error=no_cache")
+            self.request.RESPONSE.redirect(self.context.absolute_url() + "/@@tinymceplominoform/error_page?error=no_cache")

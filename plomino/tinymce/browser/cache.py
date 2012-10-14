@@ -21,4 +21,4 @@ class PlominoCache(object):
         self.context.setFormula(cacheformula)
         self.context.aq_inner.at_post_edit_script()
         
-        self.request.RESPONSE.redirect(self.context.portal_url() + "/plomino_plugins/plomino_tinymce/plomino.tinymce_submit_ok.htm?type=cache&value=" + self.context.id)
+        self.request.RESPONSE.redirect(self.context.absolute_url() + "/../@@tinymceplominoform/valid_page?type=cache&value=" + self.context.id)

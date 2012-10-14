@@ -32,7 +32,7 @@
 				// Add a section
 				else {
 					ed.windowManager.open({
-						file : url + '/add_accordion.htm',
+						file : url + '/add_accordion.htm.pt',
 						width : 320 + ed.getLang('plomino_accordion.delta_width', 0),
 						height : 160 + ed.getLang('plomino_accordion.delta_height', 0),
 						inline : 1

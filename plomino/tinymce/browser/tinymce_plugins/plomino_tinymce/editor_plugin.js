@@ -105,27 +105,27 @@
 			
 			if (elementType === "field") {
 				var elementClass = 'plominoFieldClass';
-				var elementEditionPage = '/plominofield.htm';
+				var elementEditionPage = '@@tinymceplominoform/field_form';
 				var elementIdName = 'fieldid';
 			}
 			else if (elementType === "action") {
 				var elementClass = 'plominoActionClass';
-				var elementEditionPage = '/plominoaction.htm';
+				var elementEditionPage = '@@tinymceplominoform/action_form';
 				var elementIdName = 'actionid';
 			}
 			else if (elementType === "subform") {
 				var elementClass = 'plominoSubformClass';
-				var elementEditionPage = '/plominosubform.htm';
+				var elementEditionPage = '@@tinymceplominoform/subform_form';
 				var elementIdName = 'subformid';
 			}
 			else if (elementType === "hidewhen") {
 				var elementClass = 'plominoHidewhenClass';
-				var elementEditionPage = '/plominohidewhen.htm';
+				var elementEditionPage = '@@tinymceplominoform/hidewhen_form';
 				var elementIdName = 'hidewhenid';
 			}
 			else if (elementType === "cache") {
 				var elementClass = 'plominoCacheClass';
-				var elementEditionPage = '/plominocache.htm';
+				var elementEditionPage = '@@tinymceplominoform/cache_form';
 				var elementIdName = 'cacheid';
 			}
 			else
@@ -186,7 +186,8 @@
 			
 			ed.windowManager.open({
 				// GET the parent pathname (part of the URL) and the field selected in the editor
-				file : url + elementEditionPage + '?parent=' + zopePhysicalPath + '&' + elementIdName + '=' + elementId,
+				//file : url + elementEditionPage + '?parent=' + zopePhysicalPath + '&' + elementIdName + '=' + elementId,
+			    file : zopePhysicalPath + '/' + elementEditionPage + '?' + elementIdName + '=' + elementId,
 				width : 600 + parseInt(ed.getLang('plomino_tinymce.delta_width', 0)),
 				height : 400 + parseInt(ed.getLang('plomino_tinymce.delta_height', 0)),
 				inline : 1

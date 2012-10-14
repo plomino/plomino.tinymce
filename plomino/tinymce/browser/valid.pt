@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
-	<script type="text/javascript" src="js/plomino.tinymce.js"></script>
+	<script type="text/javascript" src="++resource++plomino.tinymce/plomino_tinymce/js/plomino.tinymce.js"></script>
 	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
 </head>
 <body tal:define="fieldurl here/REQUEST/fieldurl|nothing;">

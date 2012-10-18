@@ -26,7 +26,6 @@ setup(name='plomino.tinymce',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'Products.CMFPlomino',
           'Products.TinyMCE',
       ],
       entry_points="""

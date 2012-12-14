@@ -8,11 +8,5 @@
   <five:registerPackage package="." initialize=".initialize" />
   <include package=".browser"/>
   <include file="profiles.zcml" />
-  <genericsetup:importStep
-      name="plomino.tinymce-postInstall"
-      title="manual coded post-install for plomino.tinymce"
-      description="manual coded post-install for plomino.tinymce"
-      handler="plomino.tinymce.setuphandlers.postInstall">
-    <depends name="plone-final"/>
-  </genericsetup:importStep>
+
 </configure>

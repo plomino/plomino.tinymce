@@ -20,11 +20,13 @@ Authors
 ------------
 
 - Romaric Breil <romaric.breil@supinfo.com>
+- Eric Brehault <eric.brehault@makina-corpus.com>
 - Makina Corpus <python@makina-corpus.com>
 
 Contributors
 -----------------
 
+- Alessandro Pisa <alessandro.pisa@redturtle.it>
 - Mathieu Pasquet <kiorky@cryptelium.net>
 
 Plomino Fields, Actions, Sub-forms and Hide-when Management

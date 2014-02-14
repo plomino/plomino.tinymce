@@ -16,9 +16,9 @@
 		init : function(ed, url) {
 			// Get the physical path of the current Zope object
 			tinymce.util.XHR.send({
-				url : './getPhysicalPath',
+				url : './absolute_url_path',
 				success : function(text) {
-					zopePhysicalPath = tinymce.util.JSON.parse('[' + text.substr(1, text.length - 2) + ']').join('/');
+					zopePhysicalPath = text;
 				}
 			});
 

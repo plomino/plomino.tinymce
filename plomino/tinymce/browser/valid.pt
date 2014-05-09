@@ -11,9 +11,11 @@
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 	<script type="text/javascript" src="++resource++plomino.tinymce/plomino_tinymce/js/plomino.tinymce.js"></script>
 	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../plugins/plonebrowser/css/plonebrowser.css" />
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../portal_css/columns.css" />
 </head>
-<body tal:define="fieldurl here/REQUEST/fieldurl|nothing;">
-	<div class="dialog-wrapper">
+<body id="plonebrowser" tal:define="fieldurl here/REQUEST/fieldurl|nothing;">
+	<div class="dialog-wrapper" id="content">
 		<form tal:condition="fieldurl">
 			<fieldset tal:define="field python:here.restrictedTraverse(fieldurl);">
 				<legend i18n:translate="plominofield_advanced">Advanced edition</legend>

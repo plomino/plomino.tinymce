@@ -11,11 +11,13 @@
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 	<script type="text/javascript" src="js/add_accordion.js"></script>
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../plugins/plonebrowser/css/plonebrowser.css" />
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../portal_css/columns.css" />
 	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 </head>
 
-<body>
-	<div class="dialog-wrapper">
+<body id="plonebrowser">
+	<div class="dialog-wrapper" id="content">
 		<form onsubmit="insert_accordion();">
 			<fieldset>
 				<legend i18n:translate="plominoaccordion_form">Insert the section header</legend>

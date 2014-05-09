@@ -10,16 +10,18 @@
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../plugins/plonebrowser/css/plonebrowser.css" />
+	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../portal_css/columns.css" />
 	<link rel="stylesheet" type="text/css" href="++resource++plomino.tinymce/plomino_tinymce/css/plomino.tinymce.css" />
 </head>
-<body tal:define="form python:view.context;
+<body id="plonebrowser" tal:define="form python:view.context;
                   actionid view/request/actionid|nothing;
                   adapted form/tinyform|nothing;
                   actionProperties adapted/getActionProperties;
                   action adapted/getAction;
 				  ">
     
-	<div class="dialog-wrapper">
+	<div class="dialog-wrapper" id="content">
 		<!-- Form which selects an existing action -->
 		<fieldset tal:condition="action">
 			<legend i18n:translate="plominoaction_selection">Select a Plomino Action</legend>

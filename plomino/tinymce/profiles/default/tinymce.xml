@@ -18,7 +18,7 @@
   <toolbar_plomino_tinymce value="plominohidewhen"/>
   <toolbar_plomino_tinymce value="plominoaccordion"/>
   <toolbar_plomino_tinymce value="plominocache"/>
-  <toolbar_plomino_tinymce value="mceVisualChars"/>
+  <toolbar_plomino_tinymce value="mceVisualBlocks"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

@@ -16,6 +16,11 @@ Companies
 .. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
 .. _makinacom:  http://www.makina-corpus.com
 
+Silk icon set 1.3
+
+ * Mark James
+ * http://www.famfamfam.com/lab/icons/silk/
+
 Authors
 ------------
 
@@ -28,6 +33,8 @@ Contributors
 
 - Alessandro Pisa <alessandro.pisa@redturtle.it>
 - Mathieu Pasquet <kiorky@cryptelium.net>
+
+Thanks to
 
 Plomino Fields, Actions, Sub-forms and Hide-when Management
 ===========================================================

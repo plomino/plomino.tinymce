@@ -1,6 +1,7 @@
 tinyMCE.addI18n({en:{
 plomino_tinymce:{
 field:"Add/edit a Plomino Field",
+label:"Add/edit a Plomino Label",
 action:"Add/edit a Plomino Action",
 subform:"Add a Plomino Sub-form",
 hidewhen:"Add a Plomino Hiden-when zone",

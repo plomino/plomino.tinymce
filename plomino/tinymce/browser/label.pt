@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+    id="region-content"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xml:lang="en" lang="en"
+    i18n:domain="plomino.tinymce">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+    <title i18n:translate="plominolabel_title">Insert a Label</title>
+    <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+    <script type="text/javascript" src="../../utils/mctabs.js"></script>
+    <script type="text/javascript" src="../../utils/form_utils.js"></script>
+    <link rel="stylesheet" type="text/css" tal:attributes="href string:../../plugins/plonebrowser/css/plonebrowser.css" />
+    <link rel="stylesheet" type="text/css" tal:attributes="href string:../../portal_css/columns.css" />
+    <link rel="stylesheet" type="text/css" href="++resource++plomino.tinymce/plomino_tinymce/css/plomino.tinymce.css" />
+</head>
+<body id="plonebrowser" tal:define="form python:view.context;
+                  labelr python: view.request.get('labelid', ':').split(':');
+                  labelid python: labelr[0];
+                  labeltext python: len(labelr) > 1 and labelr[1] or '';
+                  fields python:form.getFormFields();
+                  ">
+                  
+    <div class="dialog-wrapper" id="content">
+        <!-- Form which edits the selected field -->
+        <form method="post" tal:attributes="action python:view.context.absolute_url() + '/@@tinymceplominoform/valid_page'">
+            <fieldset>
+                <legend i18n:translate="plominolabel_subtitle">Insert a Label</legend>
+                
+                <p>
+                    <input type="hidden" name="type" value="label" />
+                
+                    <label for="plominoLabelId" i18n:translate="plominolabel_selection">Field</label>
+                    <select id="plominoLabelId" name="value">
+                        <option
+                            tal:repeat="item fields"
+                            tal:content="string: ${item/id} : ${item/Title}"
+                            tal:attributes="value item/id; selected python:item.id==labelid"></option>
+                    </select>
+                </p>
+                <p>
+                    <br />
+                    <label for="plominoLabelCustom">Custom Label Text</label>
+                    <input type="text" id="plominoLabelCustom" name="option" tal:attributes="value labeltext"/>
+                </p>
+                <p>
+                    By default the Title of the field will be used as the label. If the Title of the field doesn't make sense as a label you may customise the label text above.
+                </p>
+            </fieldset>
+            <div i18n:domain="tinymce" class="mceActionPanel formControls">
+                    <span class="actionButtons">
+                        <input type="submit" id="insert" class="context" name="insert" value="Insert" i18n:attributes="value;" />
+                        <input type="button" id="cancel" class="standalone" name="cancel" value="Cancel" i18n:attributes="value;" onclick="tinyMCEPopup.close();" />
+                    </span>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

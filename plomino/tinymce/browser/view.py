@@ -33,6 +33,12 @@ class TinyMCEPlominoFormView(BrowserView):
         """."""
         params = {}
         return self.field_template(**params)
+
+    label_template = ViewPageTemplateFile('label.pt')
+    def label_form(self, **params):
+        """."""
+        params = {}
+        return self.label_template(**params)
     
     hidewhen_template = ViewPageTemplateFile('hidewhen.pt')
     def hidewhen_form(self, **params):

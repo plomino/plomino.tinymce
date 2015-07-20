@@ -1,13 +1,18 @@
 // Functions called by the popup
-var PlominoDialog = {	
+var PlominoDialog = {
 	// Called when the "submit" button is clicked
-	submit : function(type, value) {
+	submit : function(type, value, option) {
 		var ed = tinyMCEPopup.editor;
-		
 		if (type == 'action')
 			var plominoClass = 'plominoActionClass';
 		else if (type == 'field')
 			var plominoClass = 'plominoFieldClass';
+		else if (type == 'label') {
+			var plominoClass = 'plominoLabelClass';
+			if (option != null && option.length > 0) {
+				value = value + ':' + option;
+			}
+		}
 		else if (type == 'subform')
 			var plominoClass = 'plominoSubformClass';
 		
@@ -19,10 +24,13 @@ var PlominoDialog = {
 			// Insert or replace the selection
 			tinyMCEPopup.restoreSelection();
 			var selection = ed.selection.getNode();
-			if (tinymce.DOM.hasClass(selection, 'plominoActionClass') || tinymce.DOM.hasClass(selection, 'plominoFieldClass') || tinymce.DOM.hasClass(selection, 'plominoSubformClass'))
+			if (tinymce.DOM.hasClass(selection, 'plominoActionClass') || tinymce.DOM.hasClass(selection, 'plominoFieldClass') || tinymce.DOM.hasClass(selection, 'plominoLabelClass') || tinymce.DOM.hasClass(selection, 'plominoSubformClass'))
 				ed.dom.setOuterHTML(selection, span);
-			else
+			else {
+				// Add an empty span at the end
+				span = span + '<span>&nbsp;</span>'
 				ed.execCommand('mceInsertContent', false, span, {skip_undo : 1});
+			}
 		}
 		else if (type == "hidewhen")
 		{

@@ -11,6 +11,7 @@
  <toolbar>
   <customtoolbarbuttons purge="False">
   <toolbar_plomino_tinymce value="plominofield"/>
+  <toolbar_plomino_tinymce value="plominolabel"/>
   <toolbar_plomino_tinymce value="plominoaction"/>
   <toolbar_plomino_tinymce value="plominosubform"/>
   <toolbar_plomino_tinymce value="plominohidewhen"/>

@@ -9,7 +9,7 @@
           name="tinymceplominoform"
           class=".view.TinyMCEPlominoFormView"
           allowed_interface=".view.ITinyMCEPlominoFormView"
-          allowed_attributes="action_form cache_form field_form hidewhen_form subform_form error_page valid_page"
+          allowed_attributes="action_form cache_form field_form hidewhen_form subform_form label_form error_page valid_page"
           permission="zope2.View"
         />
    <browser:page

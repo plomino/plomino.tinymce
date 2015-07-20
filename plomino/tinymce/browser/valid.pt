@@ -3,6 +3,7 @@
 	xml:lang="en" lang="en" i18n:domain="plomino.tinymce">
 <head tal:define="type here/REQUEST/type|nothing;
 				  value here/REQUEST/value|nothing;
+				  option here/REQUEST/option|nothing;
 				  ">
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
 	<title i18n:translate="plominofield_title">Add/edit a Plomino Field</title>
@@ -10,7 +11,7 @@
 	<script type="text/javascript" src="../../utils/mctabs.js"></script>
 	<script type="text/javascript" src="../../utils/form_utils.js"></script>
 	<script type="text/javascript" src="++resource++plomino.tinymce/plomino_tinymce/js/plomino.tinymce.js"></script>
-	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value');"></script>
+	<script type="text/javascript" tal:content="structure string: PlominoDialog.submit('$type', '$value', '$option');"></script>
 	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../plugins/plonebrowser/css/plonebrowser.css" />
 	<link rel="stylesheet" type="text/css" tal:attributes="href string:../../portal_css/columns.css" />
 </head>

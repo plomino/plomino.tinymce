@@ -5,6 +5,7 @@
     <element value="plomino_tinymce|/++resource++plomino.tinymce/plomino_tinymce/editor_plugin.js"/>
     <element value="atomic|/++resource++plomino.tinymce/atomic/editor_plugin.js"/>
     <element value="plomino_accordion|/++resource++plomino.tinymce/plomino_accordion/editor_plugin.js"/>
+    <element value="visualblocks|/++resource++plomino.tinymce/visualblocks/plugin.js"/>
   </customplugins>
  </resourcetypes>
 
@@ -17,6 +18,7 @@
   <toolbar_plomino_tinymce value="plominohidewhen"/>
   <toolbar_plomino_tinymce value="plominoaccordion"/>
   <toolbar_plomino_tinymce value="plominocache"/>
+  <toolbar_plomino_tinymce value="mceVisualChars"/>
   </customtoolbarbuttons>
  </toolbar>
 </object>

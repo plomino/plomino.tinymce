@@ -36,6 +36,11 @@
 				onclick : function() { editFunction(ed, url, 'label'); },
 				image : url + '/img/PlominoLabel.png'
 			});
+			ed.addButton('plominolinkto', {
+				title : ed.getLang('plomino_tinymce.linkto', "Add/edit a Link to a Plomino Field"),
+				onclick : function() { editFunction(ed, url, 'linkto'); },
+				image : url + '/img/PlominoLinkto.png'
+			});
 			ed.addButton('plominoaction', {
 				title : ed.getLang('plomino_tinymce.action', "Add/edit a Plomino Action"),
 				onclick : function() { editFunction(ed, url, 'action'); },
@@ -66,11 +71,12 @@
 				var curNode = ed.selection.getNode();
 				var isField = ed.dom.hasClass(curNode, 'plominoFieldClass');
 				var isLabel = ed.dom.hasClass(curNode, 'plominoLabelClass');
+				var isLinkto = ed.dom.hasClass(curNode, 'plominoLinktoClass');
 				var isAction = ed.dom.hasClass(curNode, 'plominoActionClass');
 				var isSubform = ed.dom.hasClass(curNode, 'plominoSubformClass');
 				var isHidewhen = ed.dom.hasClass(curNode, 'plominoHidewhenClass');
 				var isCache = ed.dom.hasClass(curNode, 'plominoCacheClass');
-				var isPlominoClass = isField || isAction || isSubform || isHidewhen || isCache || isLabel;
+				var isPlominoClass = isField || isAction || isSubform || isHidewhen || isCache || isLabel || isLinkto;
 				
 				ed.controlManager.setDisabled('plominofield', isNotFormEditor || (isPlominoClass && !isField));
 				ed.controlManager.setDisabled('plominoaction', isNotFormEditor || (isPlominoClass && !isAction));
@@ -78,6 +84,7 @@
 				ed.controlManager.setDisabled('plominohidewhen', isNotFormEditor || (isPlominoClass && !isHidewhen));
 				ed.controlManager.setDisabled('plominocache', isNotFormEditor || (isPlominoClass && !isCache));
 				ed.controlManager.setDisabled('plominolabel', isNotFormEditor || (isPlominoClass && !isLabel));
+				ed.controlManager.setDisabled('plominolinkto', isNotFormEditor || (isPlominoClass && !isLinkto));
 			});
 		},
 
@@ -119,6 +126,11 @@
 				var elementClass = 'plominoLabelClass';
 				var elementEditionPage = '@@tinymceplominoform/label_form';
 				var elementIdName = 'labelid';
+			}
+			else if (elementType === "linkto") {
+				var elementClass = 'plominoLinktoClass';
+				var elementEditionPage = '@@tinymceplominoform/linkto_form';
+				var elementIdName = 'linktoid';
 			}
 			else if (elementType === "action") {
 				var elementClass = 'plominoActionClass';

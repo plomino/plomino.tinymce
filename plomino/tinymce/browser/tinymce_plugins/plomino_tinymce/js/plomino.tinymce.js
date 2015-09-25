@@ -13,6 +13,12 @@ var PlominoDialog = {
 				value = value + ':' + option;
 			}
 		}
+		else if (type == 'linkto') {
+			var plominoClass = 'plominoLinktoClass';
+			if (option != null && option.length > 0) {
+				value = value + ':' + option;
+			}
+		}
 		else if (type == 'subform')
 			var plominoClass = 'plominoSubformClass';
 		
@@ -24,7 +30,7 @@ var PlominoDialog = {
 			// Insert or replace the selection
 			tinyMCEPopup.restoreSelection();
 			var selection = ed.selection.getNode();
-			if (tinymce.DOM.hasClass(selection, 'plominoActionClass') || tinymce.DOM.hasClass(selection, 'plominoFieldClass') || tinymce.DOM.hasClass(selection, 'plominoLabelClass') || tinymce.DOM.hasClass(selection, 'plominoSubformClass'))
+			if (tinymce.DOM.hasClass(selection, 'plominoActionClass') || tinymce.DOM.hasClass(selection, 'plominoFieldClass') || tinymce.DOM.hasClass(selection, 'plominoLabelClass') || tinymce.DOM.hasClass(selection, 'plominoLinktoClass') || tinymce.DOM.hasClass(selection, 'plominoSubformClass'))
 				ed.dom.setOuterHTML(selection, span);
 			else {
 				// Add an empty span at the end
